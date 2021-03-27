@@ -5,4 +5,8 @@
     <RootNamespace>flight_manager_2021</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\svg\" />
+  </ItemGroup>
+
 </Project>

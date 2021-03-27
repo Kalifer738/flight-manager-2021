@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - flight_manager_2021</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+
+    <style>
+        .bgImage {
+            position: sticky;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            background-image: url("~/wwwroot/img/airplane2.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- Background -->
+    <div class="background">
+        <div class="bgImage">
+            <div class="background-vignette"></div>
+        </div>
+    </div>
+    <!-- End of Backgroud -->
+    <!-- Header -->
+    <div class="header">
+        <div class="header-options">
+            <a class="container-item" href="/">
+                <img src="~/svg/airplane.svg" class="svg"><span>Flights</span>
+            </a>
+            <a class="container-item" href="/login">
+                <img src="~/svg/person.svg" class="svg"><span>Login</span>
+            </a>
+            <div class="container-item">
+                <img src="~/svg/spy-glass.svg" class="svg"><!--<span>Search</span>-->
+                <input type="text" placeholder="Search..." class="search">
+            </div>
+        </div>
+    </div>
+    <!-- End of Header-->
+    <!-- Hero -->
+    <div class="hero">
+        @RenderBody()
+    </div>
+    <!-- End of Hero -->
+
+
+    <div class="footer">
+        <span style="margin: auto; color: white;">Footer Test</span>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
