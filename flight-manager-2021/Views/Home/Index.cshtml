@@ -2,6 +2,20 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Display up to 20 Flights in here.</h1>
-</div>
+
+@for (int i = 0; i < 20; i++)
+{
+    <div class="hero-content">
+        <div class="hero-content-header">
+            <span>[Going From]</span>
+        </div>
+        <div class="hero-content-hero">
+            [Starting Hour] - [Ending Hour]
+            [Additional information]
+            //This is temporary
+        </div>
+        <div class="hero-content-footer">
+            <span>[Going To]</span>
+        </div>
+    </div>
+}
