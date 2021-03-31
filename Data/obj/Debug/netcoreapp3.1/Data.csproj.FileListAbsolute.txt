@@ -1,0 +1,12 @@
+B:\flight-manager-2021-master\Data\bin\Debug\netcoreapp3.1\Data.deps.json
+B:\flight-manager-2021-master\Data\bin\Debug\netcoreapp3.1\Data.dll
+B:\flight-manager-2021-master\Data\bin\Debug\netcoreapp3.1\Data.pdb
+B:\flight-manager-2021-master\Data\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache
+B:\flight-manager-2021-master\Data\obj\Debug\netcoreapp3.1\Data.AssemblyInfoInputs.cache
+B:\flight-manager-2021-master\Data\obj\Debug\netcoreapp3.1\Data.AssemblyInfo.cs
+B:\flight-manager-2021-master\Data\obj\Debug\netcoreapp3.1\Data.dll
+B:\flight-manager-2021-master\Data\obj\Debug\netcoreapp3.1\Data.pdb
+B:\flight-manager-2021-master\Data\bin\Debug\netcoreapp3.1\Data.runtimeconfig.json
+B:\flight-manager-2021-master\Data\bin\Debug\netcoreapp3.1\Data.runtimeconfig.dev.json
+B:\flight-manager-2021-master\Data\obj\Debug\netcoreapp3.1\Data.genruntimeconfig.cache
+B:\flight-manager-2021-master\Data\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache
