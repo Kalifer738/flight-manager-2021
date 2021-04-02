@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Data.Entity;
-using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
@@ -16,7 +16,7 @@ namespace Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=ContactsDb;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=FlightDB;");
             optionsBuilder.UseLazyLoadingProxies();
         }
 

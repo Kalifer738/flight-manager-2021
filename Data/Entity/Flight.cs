@@ -30,7 +30,8 @@ namespace Data.Entity
         //plane's type for database
         public string TypeOfPlane { get; set; }
 
-        //plane's id number for database
+        //plane's id number for database primary key
+        [Key]
         public int PlaneID { get; set; }
 
         //pilot's name for database

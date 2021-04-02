@@ -3,7 +3,7 @@ using System;
 
 namespace Data.Migrations
 {
-    public partial class contactsdb : Migration
+    public partial class FlightDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

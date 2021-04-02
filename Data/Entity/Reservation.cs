@@ -22,7 +22,8 @@ namespace Data.Entity
         [Required]
         public string LastName { get; set; }
 
-        //required primary key passengers's egn for database
+        //required primary key passengers's egn for database primary key
+        [Key]
         [Required]
         public int EGN { get; set; }
 

@@ -30,7 +30,8 @@ namespace Data.Entity
         [Required]
         public string LastName { get; set; }
 
-        //primary key user's egn for database
+        //primary key user's egn for database primary key
+        [Key]
         public int EGN { get; set; }
 
         //user's address for database

@@ -1,23 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "B:\\flight-manager-2021-master\\Data\\Data.csproj": {}
+    "C:\\Users\\Dancho\\OneDrive\\Desktop\\Flight\\Data\\Data.csproj": {}
   },
   "projects": {
-    "B:\\flight-manager-2021-master\\Data\\Data.csproj": {
+    "C:\\Users\\Dancho\\OneDrive\\Desktop\\Flight\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "B:\\flight-manager-2021-master\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\Dancho\\OneDrive\\Desktop\\Flight\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "B:\\flight-manager-2021-master\\Data\\Data.csproj",
+        "projectPath": "C:\\Users\\Dancho\\OneDrive\\Desktop\\Flight\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\Dancho\\.nuget\\packages\\",
-        "outputPath": "B:\\flight-manager-2021-master\\Data\\obj\\",
+        "outputPath": "C:\\Users\\Dancho\\OneDrive\\Desktop\\Flight\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\Dancho\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,6 +30,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -39,6 +42,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -80,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
