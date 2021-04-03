@@ -19,6 +19,5 @@ namespace Data
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=FlightDB;");
             optionsBuilder.UseLazyLoadingProxies();
         }
-
     }
 }

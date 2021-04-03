@@ -32,15 +32,19 @@ namespace Data.Entity
 
         //primary key user's egn for database primary key
         [Key]
+        [Required]
         public int EGN { get; set; }
 
         //user's address for database
+        [Required]
         public string Address { get; set; }
 
         //user's phone number for database
+        [Required]
         public int PhoneNumber { get; set; }
 
         //user's role for database
+        [Required]
         public string Role { get; set; }
     }
 }
