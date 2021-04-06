@@ -1,7 +1,16 @@
-/* Globals */
+/* 
+	Pallet 
+DarkBlue: #00254f
+GrayBlue: #49586a
+DarkGray: #737477
+LightGray: #a7a9ac
+PastelBlue: #4c6073
+*/
+
+/*--Globals--*/
 
 html{
-	color: rgb(255, 255, 255);
+	color: #e8eef1;
 	font-family: NeueHaasUnicaW1G, sans-serif;
 	font-size: 16px;
 	
@@ -18,7 +27,7 @@ body{
 }
 
 span{
-	color: rgb(255, 255, 255);
+	color: #e8eef1;
 }
 
 a:link{
@@ -64,23 +73,28 @@ a:visited{
 	top: 0;
 
 	max-height: 2rem;
-	width: 95%;
+	/*width: 95%;*/
 	padding: 2rem;
 
 	display: grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: auto auto;
 }
 
 .header-options{
+	float: left;
 	margin-left: 2rem;
 	display: grid;
 	width: 33.875rem;
-	min-width: initial;
 	grid-template-columns: auto auto auto auto;
 }
 
-.container-item{
+.header-container-button{
 	margin: auto;
+}
+
+.header-container-logo{
+	margin: auto;
+	float: right;
 }
 
 .svg{
@@ -91,7 +105,7 @@ a:visited{
 }
 
 .search{
-	background: rgb(255, 255, 255); 
+	background: #e8eef1; 
 	color: rgb(128, 128, 128);
 
 	outline: none;
@@ -101,67 +115,111 @@ a:visited{
 	box-shadow: 0 1px 5px 0 rgba(255, 255, 255, 0.5);
 }
 
-/*--Hero--*/
+/*--Content--*/
 
-.hero{
-	width: 100%;
-	min-height: 40rem;
-
-	display: grid;
-	grid-template-columns: auto auto;
-	
-}
-
-.hero-content{
-	margin: auto;
-	margin-top: 2rem;
-	
-	border: 2px; 
-	border-radius: 2px; 
-
-	width: 22.75rem; 
-	height: 15.5rem;
-	background-color: rgba(255, 255, 255, 0.096);
-	box-shadow: 0 1px 5px 0 rgba(255, 255, 255, 0.5);
-}
-
-.hero-content-header{
+.content-incasing{
 	width: 100%; 
-	height: 2rem; 
-	padding-top: 0.5rem;
-	background-color: rgba(255, 255, 255, 0.322); 
-
-	border: 2px;
-	border-radius: 2px 2px 0px 0px; 
-	box-shadow: 0px 2px 5px 2px rgba(255, 255, 255, 0.322);
-	text-align: center;
+	min-height: 40rem;
 }
 
-.hero-content-hero{
+.content{
+	width: 95%;
+	margin: auto; 
+	box-shadow: 0 1px 5px 0 rgba(255, 255, 255, 0.5);
+	border-radius: 10px;
+}
+
+.content-header{
+	height: 3rem;
+	max-height: 3rem;
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0.226); 
+	border-radius: 10px 10px 0px 0px; 
+	display: grid; 
+	grid-template-columns: 14.9% 13.55% 19.6% 19.7% 15.4% 16.8%;
+}
+
+.content-header-item{
+	border-style: solid; 
+	border-color: rgba(255, 255, 255, 0.226);  
+	border-width: 1px;
+	
+	padding-top: 0.7rem;
+	text-align: center;
+}
+	.content-header-item:first-child{
+		border-radius: 10px 0px 0px 0px;
+	}
+
+	.content-header-item:last-child{
+		border-radius: 0px 10px 0px 0px;
+	}
+
+.content-hero{
+	/*min-height: 36rem; */
+	border-radius: 0px 0px 10px 10px;
+	background-color: rgba(255, 255, 255, 0.096);
+}
+
+.content-hero-flight{
 	width: 100%;
-	height: 9.5rem;
-
-	padding-top: 1rem;
-	text-align: center;
+	height: 3rem;
+	background-color: rgba(255, 255, 255, 0.295);
+	border-radius: 0px 0px 10px 10px;
+	display: grid; 
+	grid-template-columns: 14.9% 13.55% 19.6% 19.7% 15.4% 16.8%;
 }
 
-.hero-content-footer{
-	width: 100%;
-	height: 2rem;
-	padding-top: 0.5rem;
-
-	background-color: rgba(255, 255, 255, 0.322); 
-
-	border: 2px;
-	border-radius: 2px 2px 0px 0px; 
-	box-shadow: 0px -2px 5px 2px rgba(255, 255, 255, 0.322);
-
+.conteont-hero-flight-item{
+	padding-top: 0.7rem;
 	text-align: center;
+	border-style: solid; 
+	border-color: rgba(255, 255, 255, 0.226);  
+	border-width: 1px;
 }
+
+	.conteont-hero-flight-item:last-child{
+		border-radius: 0px 0px 10px 00px;
+	}
+
+	.conteont-hero-flight-item:nth-last-child(6){
+		border-radius: 0px 0px 0px 10px;
+	}
+
+
+/*.content-footer{
+	min-height: 2rem; 
+	background-color: rgba(255, 255, 255, 0.096); 
+	border-radius: 0px 0px 10px 10px;
+}*/
 
 /*--Footer--*/
 
 .footer{
 	display: grid;
 	padding: 2rem;
+}
+
+/*--Play-Area--*/
+
+@media(max-width:750px){
+	.header{
+		/*background-color: #00254f;
+		box-shadow: 0px 1px 2px 0px #00254f;*/
+		max-height: none;
+		padding-top: 0px;
+		grid-template-columns: none;
+	}
+	.header-options{
+		float:none;
+		width: unset;
+		margin: auto;
+		grid-template-columns: auto;
+	}
+	.header-container-button{
+		margin-top: 1rem;
+	}
+	#logo{
+		display: none;
+	}
 }
