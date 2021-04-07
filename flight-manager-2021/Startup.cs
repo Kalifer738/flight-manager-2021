@@ -16,15 +16,7 @@ namespace flight_manager_2021
     {
         public Startup(IConfiguration configuration)
         {
-            #if DEBUG
-            SeedDataBase();
-            #endif
             Configuration = configuration;
-        }
-
-        private void SeedDataBase()
-        {
-            
         }
 
         public IConfiguration Configuration { get; }
