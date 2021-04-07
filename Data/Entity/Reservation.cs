@@ -9,6 +9,9 @@ namespace Data.Entity
         /// </summary>
         /// 
 
+        //primary key
+        [Key]
+        public int Id { get; set; }
 
         //required passengers's first name for database
         [Required]
@@ -22,14 +25,13 @@ namespace Data.Entity
         [Required]
         public string LastName { get; set; }
 
-        //required primary key passengers's egn for database primary key
-        [Key]
+        //required primary key passengers's egn for database 
         [Required]
         public int EGN { get; set; }
 
         //required passengers's phone number for database
         [Required]
-        public int PhoneNumber { get; set; }
+        public char PhoneNumber { get; set; }
 
         //required passengers's nationality for database
         [Required]

@@ -35,6 +35,11 @@ namespace flight_manager_2021.Models.Flights
         public string TypeOfPlane { get; set; }
 
         //checks if the field is empty
+        [Required(ErrorMessage = "Enter plane's id.")]
+        //initiation data input by administrator for plane's id
+        public int PlaneID { get; set; }
+
+        //checks if the field is empty
         [Required(ErrorMessage = "Aviator's name is required.")]
         //initiation data input by administrator for aviator's name
         public string NameOfAviator { get; set; }

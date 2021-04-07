@@ -7,6 +7,8 @@ namespace flight_manager_2021.Models.Users
 {
     public class UsersViewModel
     {
+        public int Id { get; set; }
+
         public string UserName { get; set; }
 
         public string Password { get; set; }

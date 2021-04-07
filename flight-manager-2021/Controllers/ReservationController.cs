@@ -29,14 +29,15 @@ namespace flight_manager_2021.Controllers
 
             List<ReservationsViewModel> items = await _context.Reservations.Skip((model.Pager.CurrentPage - 1) * PageSize).Take(PageSize).Select(c => new ReservationsViewModel()
             {
-                FirstName=c.FirstName,
-                SecondName=c.SecondName,
-                LastName=c.LastName,
-                EGN=c.EGN,
-                PhoneNumber=c.PhoneNumber,
-                Nationality=c.Nationality,
-                TypeOfTicket=c.TypeOfTicket,
-                Email=c.Email
+                Id = c.Id,
+                FirstName = c.FirstName,
+                SecondName = c.SecondName,
+                LastName = c.LastName,
+                EGN = c.EGN,
+                PhoneNumber = c.PhoneNumber,
+                Nationality = c.Nationality,
+                TypeOfTicket = c.TypeOfTicket,
+                Email = c.Email
 
             }).ToListAsync();
 
@@ -68,7 +69,7 @@ namespace flight_manager_2021.Controllers
                     SecondName = createModel.SecondName,
                     LastName = createModel.LastName,
                     EGN = createModel.EGN,
-                    PhoneNumber = createModel.PhoneNumber,
+                    PhoneNumber = (char)createModel.PhoneNumber,
                     Nationality = createModel.Nationality,
                     TypeOfTicket = createModel.TypeOfTicket,
                     Email = createModel.Email
@@ -95,6 +96,7 @@ namespace flight_manager_2021.Controllers
             }
             ReservationsEditViewModel model = new ReservationsEditViewModel
             {
+                Id = reservation.Id,
                 FirstName = reservation.FirstName,
                 SecondName = reservation.SecondName,
                 LastName = reservation.LastName,
@@ -115,11 +117,12 @@ namespace flight_manager_2021.Controllers
             {
                 Reservation reservation = new Reservation()
                 {
+                    Id = editModel.Id,
                     FirstName = editModel.FirstName,
                     SecondName = editModel.SecondName,
                     LastName = editModel.LastName,
                     EGN = editModel.EGN,
-                    PhoneNumber = editModel.PhoneNumber,
+                    PhoneNumber = (char)editModel.PhoneNumber,
                     Nationality = editModel.Nationality,
                     TypeOfTicket = editModel.TypeOfTicket,
                     Email = editModel.Email
@@ -131,7 +134,7 @@ namespace flight_manager_2021.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ReservationExists(reservation.EGN))
+                    if (!ReservationExists(reservation.Id))
                     {
                         return NotFound();
                     }
@@ -157,7 +160,7 @@ namespace flight_manager_2021.Controllers
 
         private bool ReservationExists(int id)
         {
-            return _context.Reservations.Any(e => e.EGN == id);
+            return _context.Reservations.Any(e => e.Id == id);
         }
     }
 }

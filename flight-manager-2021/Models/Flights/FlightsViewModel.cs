@@ -4,6 +4,8 @@ namespace flight_manager_2021.Models.Flights
 {
     public class FlightsViewModel
     {
+        public int Id { get; set; }
+
         public string LocationFrom { get; set; }
 
         public string LocationTo { get; set; }

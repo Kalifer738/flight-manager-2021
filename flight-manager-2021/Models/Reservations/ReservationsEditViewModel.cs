@@ -9,6 +9,9 @@ namespace flight_manager_2021.Models.Reservations
         /// the data is entered automatically by EGN 
         /// </summary>
 
+        //accesses the data by id
+        public int Id { get; internal set; }
+
         //checks if the field is empty
         [Required(ErrorMessage = "First name is required.")]
         //initiation data input by administrator and passenger for passenger's first name
@@ -24,14 +27,17 @@ namespace flight_manager_2021.Models.Reservations
         //initiation data input by administrator and passenger for passenger's  last name 
         public string LastName { get; set; }
 
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Incorrect EGN")]
+        //initiation data input by administrator for employee's egn 
         public int EGN { get; set; }
 
         //checks if the field is empty
         [Required(ErrorMessage = "Enter phone number.")]
         //checks for valid phone number
+
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Incorrect phone number")]
         //initiation data input by administrator and passenger for passenger's phone number 
-        public int PhoneNumber { get; set; }
+        public char PhoneNumber { get; set; }
 
         //checks if the field is empty
         [Required(ErrorMessage = "Enter nationality.")]

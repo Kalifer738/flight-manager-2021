@@ -11,6 +11,10 @@ namespace Data.Entity
         /// 
 
 
+        //primary key
+        [Key]
+        public int Id { get; set; }
+
         //required passengers's location from for database
         [Required]
         public string LocationFrom { get; set; }
@@ -27,20 +31,24 @@ namespace Data.Entity
         [Required]
         public DateTime Return { get; set; }
 
-        //plane's type for database
+        //required plane's type for database
+        [Required]
         public string TypeOfPlane { get; set; }
 
-        //plane's id number for database primary key
-        [Key]
+        //required plane's id number for database primary key
+        [Required]
         public int PlaneID { get; set; }
 
-        //pilot's name for database
+        //required pilot's name for database
+        [Required]
         public string NameOfAviator { get; set; }
 
-        //plane's capacity of economy class for database
+        //required plane's capacity of economy class for database
+        [Required]
         public int CapacityOfEconomyClass { get; set; }
 
-        //plane's capacity of business class for database
+        //required plane's capacity of business class for database
+        [Required]
         public int CapacityOfBusinessClass { get; set; }
     }
 }

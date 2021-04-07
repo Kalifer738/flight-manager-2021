@@ -10,6 +10,9 @@ namespace flight_manager_2021.Models.Users
         /// the data is entered automatically by EGN 
         /// </summary>
 
+        //accesses the data by id
+        public int Id { get; set; }
+
         //checks if the field is empty
         [Required(ErrorMessage = "User name is required.")]
         //initiation data input by administrator for username
@@ -37,6 +40,8 @@ namespace flight_manager_2021.Models.Users
         //initiation data input by administrator for empolyee's last name 
         public string LastName { get; set; }
 
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Incorrect EGN")]
+        //initiation data input by administrator for employee's egn 
         public int EGN { get; set; }
 
         //checks if the field is empty
@@ -49,7 +54,7 @@ namespace flight_manager_2021.Models.Users
         //checks for valid phone number
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Incorrect phone number")]
         //initiation data input by administrator for empolyee's phone number
-        public int PhoneNumber { get; set; }
+        public char PhoneNumber { get; set; }
 
         //checks if the field is empty
         [Required(ErrorMessage = "Role is required.")]

@@ -10,6 +10,10 @@ namespace Data.Entity
         /// 
 
 
+        //primary key
+        [Key]
+        public int Id { get; set; }
+
         //required user's username for database
         [Required]
         public string UserName { get; set; }
@@ -30,8 +34,7 @@ namespace Data.Entity
         [Required]
         public string LastName { get; set; }
 
-        //primary key user's egn for database primary key
-        [Key]
+        //primary key user's egn for database 
         [Required]
         public int EGN { get; set; }
 
@@ -41,7 +44,7 @@ namespace Data.Entity
 
         //user's phone number for database
         [Required]
-        public int PhoneNumber { get; set; }
+        public char PhoneNumber { get; set; }
 
         //user's role for database
         [Required]

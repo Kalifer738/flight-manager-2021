@@ -28,6 +28,7 @@ namespace flight_manager_2021.Controllers
 
             List<UsersViewModel> items = await _context.Users.Skip((model.Pager.CurrentPage - 1) * PageSize).Take(PageSize).Select(c => new UsersViewModel()
             {
+                Id = c.Id,
                 UserName = c.UserName,
                 Password = c.Password,
                 Email = c.Email,
@@ -93,6 +94,7 @@ namespace flight_manager_2021.Controllers
             }
             UsersEditViewModel model = new UsersEditViewModel
             {
+                Id = user.Id,
                 UserName = user.UserName,
                 Password = user.Password,
                 Email = user.Email,
@@ -114,6 +116,7 @@ namespace flight_manager_2021.Controllers
             {
                 User user = new User()
                 {
+                    Id = editModel.Id,
                     UserName = editModel.UserName,
                     Password = editModel.Password,
                     Email = editModel.Email,
@@ -131,7 +134,7 @@ namespace flight_manager_2021.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExist(user.EGN))
+                    if (!UserExist(user.Id))
                     {
                         return NotFound();
                     }
@@ -155,7 +158,7 @@ namespace flight_manager_2021.Controllers
 
         private bool UserExist(int id)
         {
-            return _context.Users.Any(e => e.EGN == id);
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }

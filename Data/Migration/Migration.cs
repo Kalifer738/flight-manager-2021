@@ -11,60 +11,62 @@ namespace Data.Migrations
                 name: "Flights",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)    
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     LocationFrom = table.Column<string>(nullable: false),
                     LocationTo = table.Column<string>(nullable: false),
                     Going = table.Column<DateTime>(nullable: false),
                     Return = table.Column<DateTime>(nullable: false),
                     TypeOfPlane = table.Column<string>(nullable: false),
-                    PlaneID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PlaneID = table.Column<int>(nullable: false),
                     NameOfAviator = table.Column<string>(nullable: false),
                     CapacityOfEconomyClass = table.Column<int>(nullable: false),
                     CapacityOfBusinessClass = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Flights", x => x.PlaneID);
+                    table.PrimaryKey("PK_Flights", x => x.Id);
                 });
-
 
             migrationBuilder.CreateTable(
                name: "Reservation",
                columns: table => new
                {
+                   Id = table.Column<int>(nullable: false) 
+                        .Annotation("SqlServer:Identity", "1, 1"),
                    FirstName = table.Column<string>(nullable: false),
                    SecondName = table.Column<string>(nullable: false),
                    LastName = table.Column<string>(nullable: false),
-                   EGN = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                   PhoneNumber = table.Column<int>(nullable: false),
+                   EGN = table.Column<int>(nullable: false),
+                   PhoneNumber = table.Column<char>(nullable: false),
                    Nationality = table.Column<string>(nullable: false),
                    TypeOfTicket = table.Column<string>(nullable: false),
                    Email = table.Column<string>(nullable: false)
                },
                constraints: table =>
                {
-                   table.PrimaryKey("PK_Reservation", x => x.EGN);
+                   table.PrimaryKey("PK_Reservation", x => x.Id);
                });
 
             migrationBuilder.CreateTable(
                name: "Users",
                columns: table => new
                {
+                   Id = table.Column<int>(nullable: false) 
+                        .Annotation("SqlServer:Identity", "1, 1"),
                    UserName = table.Column<string>(nullable: false),
                    Password = table.Column<string>(nullable: false),
                    Email = table.Column<string>(nullable: false),
                    FirstName = table.Column<string>(nullable: false),
                    LastName = table.Column<string>(nullable: false),
-                   EGN = table.Column<int>(nullable: false)
-                   .Annotation("SqlServer:Identity", "1, 1"),
+                   EGN = table.Column<int>(nullable: false),
                    Address = table.Column<string>(nullable: false),
-                   PhoneNumber = table.Column<int>(nullable: false),
+                   PhoneNumber = table.Column<char>(nullable: false),
                    Role = table.Column<string>(nullable: false)
                },
                constraints: table =>
                {
-                   table.PrimaryKey("PK_Users", x => x.EGN);
+                   table.PrimaryKey("PK_Users", x => x.Id);
                });
         }
 
