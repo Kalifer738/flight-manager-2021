@@ -147,30 +147,20 @@ a:visited{
 	padding-top: 0.7rem;
 	text-align: center;
 }
-	.content-header-item:first-child{
-		border-radius: 10px 0px 0px 0px;
-	}
-
-	.content-header-item:last-child{
-		border-radius: 0px 10px 0px 0px;
-	}
-
-.content-hero{
-	/*min-height: 36rem; */
-	border-radius: 0px 0px 10px 10px;
-	background-color: rgba(255, 255, 255, 0.096);
-}
 
 .content-hero-flight{
 	width: 100%;
 	height: 3rem;
 	background-color: rgba(255, 255, 255, 0.295);
-	border-radius: 0px 0px 10px 10px;
 	display: grid; 
 	grid-template-columns: 14.9% 13.55% 19.6% 19.7% 15.4% 16.8%;
 }
 
-.conteont-hero-flight-item{
+	.content-hero-flight:last-child{
+		border-radius: 0px 0px 10px 10px;
+	}
+
+.content-hero-flight-item{
 	padding-top: 0.7rem;
 	text-align: center;
 	border-style: solid; 
@@ -178,11 +168,11 @@ a:visited{
 	border-width: 1px;
 }
 
-	.conteont-hero-flight-item:last-child{
+	.content-hero-flight:last-child .content-hero-flight-item:last-of-type{
 		border-radius: 0px 0px 10px 00px;
 	}
 
-	.conteont-hero-flight-item:nth-last-child(6){
+	.content-hero-flight:last-child .content-hero-flight-item:nth-last-child(6){
 		border-radius: 0px 0px 0px 10px;
 	}
 
