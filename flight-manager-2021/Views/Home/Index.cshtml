@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Flights";
 }
-@model 
+@model flight_manager_2021.Models.Flights.FlightsViewModel
 
 
 <div class="content">
@@ -33,22 +33,22 @@
     {
         <div class="content-hero-flight">
             <div class="content-hero-flight-item">
-                @rng.Next().ToString();
+                @Html.DisplayFor(model => model.LocationFrom)
             </div>
             <div class="content-hero-flight-item">
-
+                @Html.DisplayFor(model => model.LocationTo)
             </div>
             <div class="content-hero-flight-item">
-
+                @Html.DisplayFor(model => model.Going)
             </div>
             <div class="content-hero-flight-item">
-
+                @Html.DisplayFor(model => model.Return)
             </div>
             <div class="content-hero-flight-item">
-
+                @Html.DisplayFor(model => model.CapacityOfBusinessClass + model.CapacityOfEconomyClass)
             </div>
             <div class="content-hero-flight-item">
-
+                ReserveButtonhere
             </div>
         </div>
     }

@@ -9,13 +9,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace flight_manager_2021
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
+            #if DEBUG
+            SeedDataBase();
+            #endif
             Configuration = configuration;
+        }
+
+        private void SeedDataBase()
+        {
+            
         }
 
         public IConfiguration Configuration { get; }
