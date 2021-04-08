@@ -48,7 +48,6 @@ namespace flight_manager_2021.Controllers
         }
 
         //GET: Reservation/Create
-
         public IActionResult Create()
         {
             ReservationsCreateViewModel model = new ReservationsCreateViewModel();
@@ -82,6 +81,7 @@ namespace flight_manager_2021.Controllers
             }
             return View(createModel);
         }
+        
         //GET: Reservation/Edit
         public async Task<IActionResult> Edit(int? id)
         {
@@ -108,6 +108,7 @@ namespace flight_manager_2021.Controllers
             };
             return View(model);
         }
+       
         //POST : Reservation/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]

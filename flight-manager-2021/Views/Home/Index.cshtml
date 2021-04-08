@@ -30,22 +30,30 @@
     {
         <div class="content-hero-flight">
             <div class="content-hero-flight-item">
-                @Html.DisplayFor(model => model.Items[i].LocationFrom)
+                <p>@Html.DisplayFor(model => model.Items[i].LocationFrom)</p>
             </div>
             <div class="content-hero-flight-item">
-                @Html.DisplayFor(model => model.Items[i].LocationTo)
+                <p>@Html.DisplayFor(model => model.Items[i].LocationTo)</p>
             </div>
             <div class="content-hero-flight-item">
-                @Html.DisplayFor(model => model.Items[i].Going).ToString().Split(' ')
+                <p>@Html.DisplayFor(model => model.Items[i].Going)</p>
             </div>
             <div class="content-hero-flight-item">
-                @Html.DisplayFor(model => model.Items[i].Return)
+                <p>@Html.DisplayFor(model => model.Items[i].Return)</p>
             </div>
             <div class="content-hero-flight-item">
-                @Html.DisplayFor(model => model.Items[i].CapacityOfBusinessClass)
+                <p>@Html.DisplayFor(model => model.Items[i].CapacityOfBusinessClass)</p>
             </div>
             <div class="content-hero-flight-item">
-                ReserveButtonhere
+                @{
+                    var parameters = new Dictionary<string, string>
+                    {
+                        {"id", Model.Items[i].Id.ToString() }
+                    };
+                }
+                <a asp-controller="Reservation" asp-action="Create" asp-all-route-data="parameters" asp-route="penis" asp->
+                    <input class="content-hero-flight-button" type="button" name="PlaceFlightIDHere" value="Reserve">
+                </a>
             </div>
         </div>
     }

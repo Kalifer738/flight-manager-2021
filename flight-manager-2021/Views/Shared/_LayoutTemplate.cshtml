@@ -19,14 +19,14 @@
     <!-- Header -->
     <div class="header">
         <div class="header-options">
-            <a class="container-item" href="/">
+            <a class="container-item" asp-controller="Home" asp-action="Index">
                 <img src="~/svg/airplane.svg" class="svg"><span>Flights</span>
             </a>
-            <a class="container-item" href="/login">
+            <a class="container-item" asp-controller="User" asp-action="Index">
                 <img src="~/svg/person.svg" class="svg"><span>Login</span>
             </a>
             <div class="container-item">
-                <img src="~/svg/spy-glass.svg" class="svg"><!--<span>Search</span>-->
+                <img src="~/svg/spy-glass.svg" class="svg">
                 <input type="text" placeholder="Search..." class="search">
             </div>
         </div>
