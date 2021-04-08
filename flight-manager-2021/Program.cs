@@ -45,6 +45,8 @@ namespace flight_manager_2021
 
             using (connectionDB)
             {
+                Random rng = new Random();
+
                 User[] users = new User[14];
                 users[0] = new User();
                 users[1] = new User();
@@ -61,6 +63,21 @@ namespace flight_manager_2021
                 users[12] = new User();
                 users[13] = new User();
 
+                users[0].UserName = "Theodora";
+                users[1].UserName = "Angharad";
+                users[2].UserName = "Eleanor";
+                users[3].UserName = "Lili";
+                users[4].UserName = "Brielle";
+                users[5].UserName = "Tatiana";
+                users[6].UserName = "Shayna";
+                users[7].UserName = "Tye";
+                users[8].UserName = "Lester";
+                users[9].UserName = "Marta";
+                users[10].UserName = "Riaz";
+                users[11].UserName = "Nathanael";
+                users[12].UserName = "Macy";
+                users[13].UserName = "Kier";
+
                 users[0].Address = "4106 Timberbrook Lane";
                 users[1].Address = "3641 Grasselli Street";
                 users[2].Address = "4601 Kinney Street";
@@ -76,7 +93,7 @@ namespace flight_manager_2021
                 users[12].Address = "2533 Arrowood Drive";
                 users[13].Address = "4139 Shady Pines Drive";
 
-                /*users[0].EGN = 1895557326;
+                users[0].EGN = 1895557326;
                 users[1].EGN = 2112424757;
                 users[2].EGN = 1349492426;
                 users[3].EGN = 1554744446;
@@ -89,7 +106,7 @@ namespace flight_manager_2021
                 users[10].EGN = 2052282553;
                 users[11].EGN = 0617089804;
                 users[12].EGN = 1986634891;
-                users[13].EGN = 1459456695;*/
+                users[13].EGN = 1459456695;
 
 
                 users[0].Email = "casde.pique@lttmobile.com";
@@ -147,10 +164,10 @@ namespace flight_manager_2021
                 users[7].Password = "L2NI2egSh9";
                 users[8].Password = "1PnAOUUqUB";
                 users[9].Password = "w4vDyVifof";
-                users[10].LastName = "qcSNfq49JV";
-                users[11].LastName = "WN4W29qp16";
-                users[12].LastName = "FpyVM00Ejk";
-                users[13].LastName = "XNe8vA31F1";
+                users[10].Password = "qcSNfq49JV";
+                users[11].Password = "WN4W29qp16";
+                users[12].Password = "FpyVM00Ejk";
+                users[13].Password = "XNe8vA31F1";
 
                 users[0].Role = "User";
                 users[1].Role = "User";
@@ -167,7 +184,22 @@ namespace flight_manager_2021
                 users[12].Role = "User";
                 users[13].Role = "User";
 
-                //connectionDB.Users.AddRange(users);
+                users[0].Role = rng.Next().ToString();
+                users[1].Role = rng.Next().ToString();
+                users[2].Role = rng.Next().ToString();
+                users[3].Role = rng.Next().ToString();
+                users[4].Role = rng.Next().ToString();
+                users[5].Role = rng.Next().ToString();
+                users[6].Role = rng.Next().ToString();
+                users[7].Role = rng.Next().ToString();
+                users[8].Role = rng.Next().ToString();
+                users[9].Role = rng.Next().ToString();
+                users[10].Role = rng.Next().ToString();
+                users[11].Role = rng.Next().ToString();
+                users[12].Role = rng.Next().ToString();
+                users[13].Role = rng.Next().ToString();
+
+                connectionDB.Users.AddRange(users);
 
                 Flight[] flights = new Flight[5];
 
@@ -189,7 +221,6 @@ namespace flight_manager_2021
                 flights[3].LocationTo = "Korea";
                 flights[4].LocationTo = "Russia";
 
-                Random rng = new Random();
                 /*byte[] bytes = new byte[32];
                 long myLong = BitConverter.ToInt64(bytes);
 
@@ -258,6 +289,11 @@ namespace flight_manager_2021
                 flights[3].NameOfAviator = "Shayna";
                 flights[4].NameOfAviator = "Lili";
 
+                flights[0].TypeOfPlane = "Normal";
+                flights[1].TypeOfPlane = "Normal";
+                flights[2].TypeOfPlane = "Abnormal";
+                flights[3].TypeOfPlane = "Normal";
+                flights[4].TypeOfPlane = "Normal";
 
                 connectionDB.AddRange(flights);
 

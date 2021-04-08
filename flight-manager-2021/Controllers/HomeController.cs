@@ -6,21 +6,50 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using flight_manager_2021.Models.Flights;
+using flight_manager_2021.Shared;
+using Data;
+using Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace flight_manager_2021.Controllers
 {
     public class HomeController : Controller
     {
+        private const int PageSize = 10;
+        private readonly ConnectionDB _context;
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _context = new ConnectionDB();
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(FlightsIndexViewModel model)
         {
-            return View();
+            model.Pager ??= new PagerViewModel();
+            model.Pager.CurrentPage = model.Pager.CurrentPage <= 0 ? 1 : model.Pager.CurrentPage;
+
+            FlightsViewModel[] items = await _context.Flights.Skip((model.Pager.CurrentPage - 1) * PageSize).Take(PageSize).Select(c => new FlightsViewModel()
+            {
+                Id = c.Id,
+                LocationFrom = c.LocationFrom,
+                LocationTo = c.LocationTo,
+                Going = c.Going,
+                Return = c.Return,
+                TypeOfPlane = c.TypeOfPlane,
+                PlaneID = c.PlaneID,
+                NameOfAviator = c.NameOfAviator,
+                CapacityOfEconomyClass = c.CapacityOfEconomyClass,
+                CapacityOfBusinessClass = c.CapacityOfBusinessClass
+
+            }).ToArrayAsync();
+
+            model.Items = items;
+            model.Pager.PagesCount = (int)Math.Ceiling(await _context.Flights.CountAsync() / (double)PageSize);
+
+            return View(model);
         }
 
         public IActionResult Privacy()

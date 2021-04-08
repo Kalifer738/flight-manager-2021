@@ -45,7 +45,7 @@ namespace flight_manager_2021.Controllers
 
             }).ToListAsync();
 
-            model.Items = items;
+            model.Items = items.ToArray();
             model.Pager.PagesCount = (int)Math.Ceiling(await _context.Flights.CountAsync() / (double)PageSize);
 
             return View(model);

@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Flights";
 }
-@model flight_manager_2021.Models.Flights.FlightsViewModel
+@model flight_manager_2021.Models.Flights.FlightsIndexViewModel
 
 
 <div class="content">
@@ -26,26 +26,23 @@
         </div>
     </div>
 
-    @{
-        Random rng = new Random();
-    }
-    @for (int i = 0; i < 20; i++)
+    @for (int i = 0; i < Model.Items.Length; i++)
     {
         <div class="content-hero-flight">
             <div class="content-hero-flight-item">
-                @Html.DisplayFor(model => model.LocationFrom)
+                @Html.DisplayFor(model => model.Items[i].LocationFrom)
             </div>
             <div class="content-hero-flight-item">
-                @Html.DisplayFor(model => model.LocationTo)
+                @Html.DisplayFor(model => model.Items[i].LocationTo)
             </div>
             <div class="content-hero-flight-item">
-                @Html.DisplayFor(model => model.Going)
+                @Html.DisplayFor(model => model.Items[i].Going).ToString().Split(' ')
             </div>
             <div class="content-hero-flight-item">
-                @Html.DisplayFor(model => model.Return)
+                @Html.DisplayFor(model => model.Items[i].Return)
             </div>
             <div class="content-hero-flight-item">
-                @Html.DisplayFor(model => model.CapacityOfBusinessClass)
+                @Html.DisplayFor(model => model.Items[i].CapacityOfBusinessClass)
             </div>
             <div class="content-hero-flight-item">
                 ReserveButtonhere
