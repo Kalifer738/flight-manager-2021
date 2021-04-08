@@ -4,9 +4,5 @@
 @model flight_manager_2021.Models.Reservations.ReservationsCreateViewModel
 
 <div style="width: 20rem; height: 20rem; background-color: darkred;">
-    @foreach (var item in ViewData)
-    {
-        Html.DisplayText(item.Key);
-        Html.DisplayText(item.Value.ToString());
-    }
+    @Model.Id.ToString()
 </div>

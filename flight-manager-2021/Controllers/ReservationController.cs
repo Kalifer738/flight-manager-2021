@@ -48,9 +48,14 @@ namespace flight_manager_2021.Controllers
         }
 
         //GET: Reservation/Create
-        public IActionResult Create()
+        [Route("/Reservation/Create",
+        Name = "create")]
+        public IActionResult Create(int id)
         {
             ReservationsCreateViewModel model = new ReservationsCreateViewModel();
+
+            // TODO: Get the information about the wanted plane by using id and context, then fill the model wit the corresponding information.
+            // You can use the "Index" method above for refrence.
 
             return View(model);
         }
