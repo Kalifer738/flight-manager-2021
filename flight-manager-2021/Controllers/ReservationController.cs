@@ -48,8 +48,7 @@ namespace flight_manager_2021.Controllers
         }
 
         //GET: Reservation/Create
-        [Route("/Reservation/Create",
-        Name = "create")]
+        [Route("/Reservation/Create", Name = "create")]
         public IActionResult Create(int id)
         {
             ReservationsCreateViewModel model = new ReservationsCreateViewModel();
