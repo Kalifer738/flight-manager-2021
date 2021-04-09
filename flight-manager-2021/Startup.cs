@@ -1,3 +1,4 @@
+using Data.Entity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +26,7 @@ namespace flight_manager_2021
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            //services.AddIdentityCore<User>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
