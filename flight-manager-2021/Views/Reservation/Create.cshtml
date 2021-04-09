@@ -3,6 +3,62 @@
 }
 @model flight_manager_2021.Models.Reservations.ReservationsCreateViewModel
 
-<div style="width: 20rem; height: 20rem; background-color: darkred;">
-    @Model.Id.ToString()
+<div class="content-incasing">
+    <div class="reservation">
+        <div class="reservation-header">
+            <div class="reservation-header-info">
+                <div>
+                    From<br>
+                    @Model.FlightInformation.LocationFrom
+                </div>
+                <div>
+                    To<br>
+                    @Model.FlightInformation.LocationTo
+                </div>
+                <div>
+                    Take off Time<br>
+                    @Model.FlightInformation.Going
+                </div>
+                <div>
+                    Landing Time<br>
+                    @Model.FlightInformation.Return
+                </div>
+                <div>
+                    Seats<br>
+                    @Model.FlightInformation.CapacityOfBusinessClass<br>
+                    SEATS NEED TO BE FIXED!
+                </div>
+            </div>
+        </div>
+        <div class="reservation-form">
+            <form asp-action="CreateReservation">
+                <div class="reservation-form-column">
+                    <input asp-for="FirstName" type="text" id="fname" name="fname" placeholder="First name" value="">
+                    <input asp-for="SecondName" type="text" id="sname" name="sname" placeholder="Second name" value="">
+                    <input asp-for="LastName" type="text" id="lname" name="lname" placeholder="Last name" value="">
+                </div>
+
+                <div class="reservation-form-column">
+                    <input asp-for="EGN" type="number" id="pin" name="pin" placeholder="PIN" value="">
+                    <input asp-for="PhoneNumber" type="" id="tele" name="tele" placeholder="Telephone" value="">
+                    <input asp-for="Nationality" type="text" id="nation" name="nation" placeholder="Nationality" value="">
+                </div>
+
+                <div>
+                    <input asp-for="Email" type="text" id="email" name="email" placeholder="Email" value="">
+                </div>
+
+                <div>
+                    <select asp-for="TypeOfTicket" id="ticket-type">
+                        <option>Standart Ticket</option>
+                        <option>Buisness Tick</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <input type="submit" id="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

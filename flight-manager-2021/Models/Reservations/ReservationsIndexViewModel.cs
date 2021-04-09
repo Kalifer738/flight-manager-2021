@@ -10,6 +10,6 @@ namespace flight_manager_2021.Models.Reservations
     {
         public PagerViewModel Pager { get; set; }
 
-        public ICollection<ReservationsViewModel> Items { get; set; }
+        public ReservationsViewModel[] Items { get; set; }
     }
 }

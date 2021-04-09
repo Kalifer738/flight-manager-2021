@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Data.Entity;
 
 namespace flight_manager_2021.Models.Reservations
 {
@@ -10,7 +11,7 @@ namespace flight_manager_2021.Models.Reservations
         /// </summary>
 
         //accesses the data by id
-        public int Id { get; set; }
+        public Flight FlightInformation;
 
         //checks if the field is empty
         [Required(ErrorMessage = "First name is required.")]

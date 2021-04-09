@@ -7,7 +7,7 @@ LightGray: #a7a9ac
 PastelBlue: #4c6073
 */
 
-/*--Globals--*/
+/*--Globals-Start--*/
 
 html{
 	color: #e8eef1;
@@ -38,7 +38,9 @@ a:visited{
 	text-decoration: none;
 }
 
-/* Background */
+/*--Globals-End--*/
+
+/*--Background-Start-*/
 
 .background{
 	position: absolute; 
@@ -65,8 +67,10 @@ a:visited{
 	z-index: -1; 
 	background-color: rgba(0,0,0,0.4); 
 }
+/*--Background-End--*/
 
-/*--Header--*/
+
+/*--Header-Start--*/
 
 .header{
 	position: relative;

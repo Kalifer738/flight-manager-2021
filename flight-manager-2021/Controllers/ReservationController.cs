@@ -27,7 +27,7 @@ namespace flight_manager_2021.Controllers
             model.Pager ??= new PagerViewModel();
             model.Pager.CurrentPage = model.Pager.CurrentPage <= 0 ? 1 : model.Pager.CurrentPage;
 
-            List<ReservationsViewModel> items = await _context.Reservations.Skip((model.Pager.CurrentPage - 1) * PageSize).Take(PageSize).Select(c => new ReservationsViewModel()
+            ReservationsViewModel[] items = await _context.Reservations.Skip((model.Pager.CurrentPage - 1) * PageSize).Take(PageSize).Select(c => new ReservationsViewModel()
             {
                 Id = c.Id,
                 FirstName = c.FirstName,
@@ -39,7 +39,7 @@ namespace flight_manager_2021.Controllers
                 TypeOfTicket = c.TypeOfTicket,
                 Email = c.Email
 
-            }).ToListAsync();
+            }).ToArrayAsync();
 
             model.Items = items;
             model.Pager.PagesCount = (int)Math.Ceiling(await _context.Reservations.CountAsync() / (double)PageSize);
@@ -49,12 +49,21 @@ namespace flight_manager_2021.Controllers
 
         //GET: Reservation/Create
         [Route("/Reservation/Create", Name = "create")]
-        public IActionResult Create(int id)
+        public IActionResult Create(string from, string to, DateTime takeOffTime, DateTime landingTime, int bSeats, int sSeats)
         {
             ReservationsCreateViewModel model = new ReservationsCreateViewModel();
 
-            // TODO: Get the information about the wanted plane by using id and context, then fill the model wit the corresponding information.
-            // You can use the "Index" method above for refrence.
+            Flight flightInformation = new Flight()
+            {
+                LocationFrom = from,
+                LocationTo = to,
+                Going = takeOffTime,
+                Return = landingTime,
+                CapacityOfBusinessClass = bSeats,
+                CapacityOfEconomyClass = sSeats
+            };
+
+            model.FlightInformation = flightInformation;
 
             return View(model);
         }
@@ -62,7 +71,7 @@ namespace flight_manager_2021.Controllers
         //Post: Reservation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ReservationsCreateViewModel createModel)
+        public async Task<IActionResult> CreateReservation(ReservationsCreateViewModel createModel)
         {
             if (ModelState.IsValid)
             {
@@ -81,9 +90,13 @@ namespace flight_manager_2021.Controllers
                 _context.Add(reservation);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("privacy");
             }
-            return View(createModel);
+
+            ReservationsCreateViewModel model = new ReservationsCreateViewModel();
+            model.FlightInformation = createModel.FlightInformation;
+
+            return View();
         }
         
         //GET: Reservation/Edit
