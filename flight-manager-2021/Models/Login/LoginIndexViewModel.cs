@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace flight_manager_2021.Models.Login
 {
-    public class LoginViewModel
+    public class LoginIndexViewModel
     {
         [Required(ErrorMessage = "You need to enter a username")]
         [StringLength(20, MinimumLength = 5)]

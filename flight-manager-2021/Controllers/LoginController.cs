@@ -9,26 +9,23 @@ using flight_manager_2021.Shared;
 using Microsoft.EntityFrameworkCore;
 using Data;
 using Data.Entity;
+using Microsoft.Extensions.Logging;
 
 namespace flight_manager_2021.Controllers
 {
     public class LoginController : Controller
     {
-        //private readonly SignInManager<IdentityUser> signInManager;
-
-        /*public LoginController(SignInManager<IdentityUser> signInManager)
-        {
-            this.signInManager = signInManager;
-        }*/
-
+        private ILogger<LoginIndexViewModel> _logger;
         private readonly ConnectionDB _context;
 
-        public LoginController()
+        public LoginController(ILogger<LoginIndexViewModel> logger)
         {
+            _logger = logger;
             _context = new ConnectionDB();
         }
 
-        public IActionResult Index(LoginViewModel model)
+
+        public IActionResult Index(LoginIndexViewModel model)
         {
             return View();
         }
@@ -47,7 +44,7 @@ namespace flight_manager_2021.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginIndexViewModel model)
         {
             if (ModelState.IsValid)
             {
