@@ -5,12 +5,6 @@ namespace Data.Entity
 {
     public class Flight
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// 
-
-
         //primary key
         [Key]
         public int Id { get; set; }
@@ -41,18 +35,16 @@ namespace Data.Entity
 
         //required plane's capacity of economy class for database
         [Required]
-        public int CapacityOfEconomyClass { get; set; }
+        public int CapacityOfStandartClass { get; set; }
 
-        //required plane's capacity of business class for database
-        [Required]
-        public int CountOfBusinessClass { get; set; }
-
-        //required plane's count of economy class for database
-        [Required]
-        public int CountOfEconomyClass { get; set; }
-
-        //required plane's count of business class for database
-        [Required]
+        [Required]//required plane's count of business class for database
         public int CapacityOfBusinessClass { get; set; }
+        
+        [Required]//required plane's count of economy class for database
+        public int CountOfStandartClass { get; set; }
+
+        [Required]//required plane's capacity of business class for database
+        public int CountOfBusinessClass { get; set; }
+        
     }
 }
