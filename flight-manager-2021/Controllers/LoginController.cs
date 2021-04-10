@@ -5,6 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using flight_manager_2021.Shared;
+using Microsoft.EntityFrameworkCore;
+using Data;
+using Data.Entity;
 
 namespace flight_manager_2021.Controllers
 {
@@ -17,9 +21,11 @@ namespace flight_manager_2021.Controllers
             this.signInManager = signInManager;
         }*/
 
+        private readonly ConnectionDB _context;
+
         public LoginController()
         {
-
+            _context = new ConnectionDB();
         }
 
         public IActionResult Index(LoginViewModel model)
@@ -36,7 +42,7 @@ namespace flight_manager_2021.Controllers
 
         [HttpGet]
         public IActionResult Login()
-        {
+        { 
             return View();
         }
 
@@ -45,14 +51,7 @@ namespace flight_manager_2021.Controllers
         {
             if (ModelState.IsValid)
             {
-                /*var result = await signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("index", "home");
-                }
-
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");*/
+                User user = await _context.Users.FirstAsync(x => x.UserName == model.UserName && x.Password == model.Password);
             }
 
             return View(model);

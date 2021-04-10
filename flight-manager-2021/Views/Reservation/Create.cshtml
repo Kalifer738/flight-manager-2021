@@ -24,9 +24,12 @@
                     @Model.FlightInformation.LandingTime
                 </div>
                 <div>
+                    @{
+                        var capacity = Model.FlightInformation.CapacityOfBusinessClass + Model.FlightInformation.CapacityOfEconomyClass;
+                        var count = Model.FlightInformation.CountOfBusinessClass + Model.FlightInformation.CountOfEconomyClass;
+                    }
                     Seats<br>
-                    @Model.FlightInformation.CapacityOfBusinessClass<br>
-                    SEATS NEED TO BE FIXED!
+                    @count/@capacity
                 </div>
             </div>
         </div>

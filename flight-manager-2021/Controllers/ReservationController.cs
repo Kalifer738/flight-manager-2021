@@ -49,7 +49,7 @@ namespace flight_manager_2021.Controllers
 
         //GET: Reservation/Create
         [Route("/Reservation/Create", Name = "create")]
-        public IActionResult Create(int id, string from, string to, DateTime takeOffTime, DateTime landingTime, int bSeats, int sSeats)
+        public IActionResult Create(int id, string from, string to, DateTime takeOffTime, DateTime landingTime, int bCapacity, int bCount, int sCapacity, int sCount)
         {
             ReservationsCreateViewModel model = new ReservationsCreateViewModel();
 
@@ -59,8 +59,10 @@ namespace flight_manager_2021.Controllers
                 LocationTo = to,
                 TakeOffTime = takeOffTime,
                 LandingTime = landingTime,
-                CapacityOfBusinessClass = bSeats,
-                CapacityOfEconomyClass = sSeats
+                CapacityOfBusinessClass = bCapacity,
+                CountOfBusinessClass = bCount,
+                CapacityOfEconomyClass = sCapacity,
+                CountOfEconomyClass = sCount,
             };
 
             model.FlightInformation = flightInformation;
@@ -125,8 +127,9 @@ namespace flight_manager_2021.Controllers
                     PlaneId = PlaneId
                 };
 
-                if (reservation.IsNotNull())
+                if (reservation.IsNotNull() && await CanOrderTickets(PlaneId, TypeOfTicket))
                 {
+                    IncrementFlightCount(PlaneId, TypeOfTicket);
                     _context.Add(reservation);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Success");
@@ -227,6 +230,38 @@ namespace flight_manager_2021.Controllers
         private bool ReservationExists(int id)
         {
             return _context.Reservations.Any(e => e.Id == id);
+        }
+
+        private async void IncrementFlightCount(int id, string typeOfTicket)
+        {
+            var flight = await _context.Flights.FindAsync(id);
+
+            if (typeOfTicket == "Standart Ticket")
+            {
+                flight.CountOfEconomyClass++;
+
+            }
+            else if (typeOfTicket == "Business Ticket")
+            {
+                flight.CountOfBusinessClass++;
+            }
+
+            _context.Update(flight);
+            await _context.SaveChangesAsync();
+        }
+
+        private async Task<bool> CanOrderTickets(int id, string typeOfticket)
+        {
+            var flight = await _context.Flights.FindAsync(id);
+            if (typeOfticket == "Standart Ticket" && flight.CountOfEconomyClass < flight.CapacityOfEconomyClass)
+            {
+                return true;
+            }
+            else if (typeOfticket == "Business Ticket" && flight.CountOfBusinessClass < flight.CapacityOfBusinessClass)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
