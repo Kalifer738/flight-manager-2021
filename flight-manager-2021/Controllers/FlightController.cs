@@ -35,13 +35,14 @@ namespace flight_manager_2021.Controllers
                 Id = c.Id,
                 LocationFrom = c.LocationFrom,
                 LocationTo = c.LocationTo,
-                Going = c.Going,
-                Return = c.Return,
+                Going = c.TakeOffTime,
+                Return = c.LandingTime,
                 TypeOfPlane = c.TypeOfPlane,
-                PlaneID = c.PlaneID,
                 NameOfAviator = c.NameOfAviator,
                 CapacityOfEconomyClass = c.CapacityOfEconomyClass,
-                CapacityOfBusinessClass = c.CapacityOfBusinessClass
+                CapacityOfBusinessClass = c.CapacityOfBusinessClass,
+                CountOfEconomyClass = c.CountOfEconomyClass,
+                CountOfBusinessClass = c.CountOfBusinessClass
 
             }).ToListAsync();
 
@@ -71,8 +72,8 @@ namespace flight_manager_2021.Controllers
                 {
                     LocationFrom = createModel.LocationFrom,
                     LocationTo = createModel.LocationTo,
-                    Going = createModel.Going,
-                    Return = createModel.Return,
+                    TakeOffTime = createModel.Going,
+                    LandingTime = createModel.Return,
                     TypeOfPlane = createModel.TypeOfPlane,
                     NameOfAviator = createModel.NameOfAviator,
                     CapacityOfEconomyClass = createModel.CapacityOfEconomyClass,
@@ -102,10 +103,9 @@ namespace flight_manager_2021.Controllers
                 Id = flight.Id,
                 LocationFrom = flight.LocationFrom,
                 LocationTo = flight.LocationTo,
-                Going = flight.Going,
-                Return = flight.Return,
+                Going = flight.TakeOffTime,
+                Return = flight.LandingTime,
                 TypeOfPlane = flight.TypeOfPlane,
-                PlaneID = flight.PlaneID,
                 NameOfAviator = flight.NameOfAviator,
                 CapacityOfEconomyClass = flight.CapacityOfEconomyClass,
                 CapacityOfBusinessClass = flight.CapacityOfBusinessClass
@@ -124,8 +124,8 @@ namespace flight_manager_2021.Controllers
                     Id = editModel.Id,
                     LocationFrom = editModel.LocationFrom,
                     LocationTo = editModel.LocationTo,
-                    Going = editModel.Going,
-                    Return = editModel.Return,
+                    TakeOffTime = editModel.Going,
+                    LandingTime = editModel.Return,
                     TypeOfPlane = editModel.TypeOfPlane,
                     NameOfAviator = editModel.NameOfAviator,
                     CapacityOfEconomyClass = editModel.CapacityOfEconomyClass,

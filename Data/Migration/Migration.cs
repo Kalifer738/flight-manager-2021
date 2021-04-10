@@ -15,8 +15,8 @@ namespace Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LocationFrom = table.Column<string>(nullable: false),
                     LocationTo = table.Column<string>(nullable: false),
-                    Going = table.Column<DateTime>(nullable: false),
-                    Return = table.Column<DateTime>(nullable: false),
+                    TakeOffTime = table.Column<DateTime>(nullable: false),
+                    LandingTime = table.Column<DateTime>(nullable: false),
                     TypeOfPlane = table.Column<string>(nullable: false),
                     PlaneID = table.Column<int>(nullable: false),
                     NameOfAviator = table.Column<string>(nullable: false),
@@ -37,8 +37,8 @@ namespace Data.Migrations
                    FirstName = table.Column<string>(nullable: false),
                    SecondName = table.Column<string>(nullable: false),
                    LastName = table.Column<string>(nullable: false),
-                   EGN = table.Column<int>(nullable: false),
-                   PhoneNumber = table.Column<char>(nullable: false),
+                   EGN = table.Column<string>(nullable: false),
+                   PhoneNumber = table.Column<string>(nullable: false),
                    Nationality = table.Column<string>(nullable: false),
                    TypeOfTicket = table.Column<string>(nullable: false),
                    Email = table.Column<string>(nullable: false)
@@ -59,9 +59,9 @@ namespace Data.Migrations
                    Email = table.Column<string>(nullable: false),
                    FirstName = table.Column<string>(nullable: false),
                    LastName = table.Column<string>(nullable: false),
-                   EGN = table.Column<int>(nullable: false),
+                   EGN = table.Column<string>(nullable: false),
                    Address = table.Column<string>(nullable: false),
-                   PhoneNumber = table.Column<char>(nullable: false),
+                   PhoneNumber = table.Column<string>(nullable: false),
                    Role = table.Column<string>(nullable: false)
                },
                constraints: table =>

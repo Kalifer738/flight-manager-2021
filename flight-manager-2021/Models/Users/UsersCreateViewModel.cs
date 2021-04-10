@@ -42,7 +42,7 @@ namespace flight_manager_2021.Models.Users
 
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Incorrect EGN")]
         //initiation data input by administrator for employee's egn 
-        public int EGN { get; set; }
+        public string EGN { get; set; }
 
         //checks if the field is empty
         [Required(ErrorMessage = "Enter employee's address.")]
@@ -53,7 +53,7 @@ namespace flight_manager_2021.Models.Users
         //checks if the field is empty
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Incorrect phone number.")]
         //initiation data input by administrator for employee's phone number
-        public char PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         //checks if the field is empty
         [Required(ErrorMessage = "Enter where the plane will take off.")]

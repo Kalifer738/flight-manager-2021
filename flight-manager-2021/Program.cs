@@ -16,12 +16,12 @@ namespace flight_manager_2021
         public static bool seedDataBase = false;
         public static void Main(string[] args)
         {
-            #if DEBUG
+#if DEBUG
             if (seedDataBase)
             {
                 SeedDataBase();
             }
-            #endif
+#endif
 
             CreateHostBuilder(args).Build().Run();
         }
@@ -93,20 +93,20 @@ namespace flight_manager_2021
                 users[12].Address = "2533 Arrowood Drive";
                 users[13].Address = "4139 Shady Pines Drive";
 
-                users[0].EGN = 1895557326;
-                users[1].EGN = 2112424757;
-                users[2].EGN = 1349492426;
-                users[3].EGN = 1554744446;
-                users[4].EGN = 0709659934;
-                users[5].EGN = 2119878402;
-                users[6].EGN = 0708487983;
-                users[7].EGN = 0933553419;
-                users[8].EGN = 1898557326;
-                users[9].EGN = 0124700418;
-                users[10].EGN = 2052282553;
-                users[11].EGN = 0617089804;
-                users[12].EGN = 1986634891;
-                users[13].EGN = 1459456695;
+                users[0].EGN = "1895557326";
+                users[1].EGN = "2112424757";
+                users[2].EGN = "1349492426";
+                users[3].EGN = "1554744446";
+                users[4].EGN = "0709659934";
+                users[5].EGN = "2119878402";
+                users[6].EGN = "0708487983";
+                users[7].EGN = "0933553419";
+                users[8].EGN = "1898557326";
+                users[9].EGN = "0124700418";
+                users[10].EGN = "2052282553";
+                users[11].EGN = "617089804";
+                users[12].EGN = "986634891";
+                users[13].EGN = "1459456695";
 
 
                 users[0].Email = "casde.pique@lttmobile.com";
@@ -184,6 +184,21 @@ namespace flight_manager_2021
                 users[12].Role = "User";
                 users[13].Role = "User";
 
+                users[0].Role = "user";
+                users[1].Role = "user";
+                users[2].Role = "user";
+                users[3].Role = "user";
+                users[4].Role = "user";
+                users[5].Role = "user";
+                users[6].Role = "user";
+                users[7].Role = "user";
+                users[8].Role = "user";
+                users[9].Role = "user";
+                users[10].Role = "user";
+                users[11].Role = "user";
+                users[12].Role = "user";
+                users[13].Role = "user";
+
                 users[0].Role = rng.Next().ToString();
                 users[1].Role = rng.Next().ToString();
                 users[2].Role = rng.Next().ToString();
@@ -198,6 +213,21 @@ namespace flight_manager_2021
                 users[11].Role = rng.Next().ToString();
                 users[12].Role = rng.Next().ToString();
                 users[13].Role = rng.Next().ToString();
+
+                users[0].PhoneNumber = rng.Next().ToString();
+                users[1].PhoneNumber = rng.Next().ToString();
+                users[2].PhoneNumber = rng.Next().ToString();
+                users[3].PhoneNumber = rng.Next().ToString();
+                users[4].PhoneNumber = rng.Next().ToString();
+                users[5].PhoneNumber = rng.Next().ToString();
+                users[6].PhoneNumber = rng.Next().ToString();
+                users[7].PhoneNumber = rng.Next().ToString();
+                users[8].PhoneNumber = rng.Next().ToString();
+                users[9].PhoneNumber = rng.Next().ToString();
+                users[10].PhoneNumber = rng.Next().ToString();
+                users[11].PhoneNumber = rng.Next().ToString();
+                users[12].PhoneNumber = rng.Next().ToString();
+                users[13].PhoneNumber = rng.Next().ToString();
 
                 connectionDB.Users.AddRange(users);
 
@@ -258,17 +288,17 @@ namespace flight_manager_2021
                 myLong = BitConverter.ToInt64(bytes);
                 flights[4].Return = new DateTime(myLong);*/
 
-                flights[0].Going = DateTime.Now;
-                flights[1].Going = DateTime.Now;
-                flights[2].Going = DateTime.Now;
-                flights[3].Going = DateTime.Now;
-                flights[4].Going = DateTime.Now;
+                flights[0].TakeOffTime = DateTime.Now;
+                flights[1].TakeOffTime = DateTime.Now;
+                flights[2].TakeOffTime = DateTime.Now;
+                flights[3].TakeOffTime = DateTime.Now;
+                flights[4].TakeOffTime = DateTime.Now;
 
-                flights[0].Return = DateTime.Now;
-                flights[1].Return = DateTime.Now;
-                flights[2].Return = DateTime.Now;
-                flights[3].Return = DateTime.Now;
-                flights[4].Return = DateTime.Now;
+                flights[0].LandingTime = DateTime.Now;
+                flights[1].LandingTime = DateTime.Now;
+                flights[2].LandingTime = DateTime.Now;
+                flights[3].LandingTime = DateTime.Now;
+                flights[4].LandingTime = DateTime.Now;
 
 
                 flights[0].CapacityOfBusinessClass = rng.Next();

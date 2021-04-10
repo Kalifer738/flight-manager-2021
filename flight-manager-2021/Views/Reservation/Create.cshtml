@@ -17,11 +17,11 @@
                 </div>
                 <div>
                     Take off Time<br>
-                    @Model.FlightInformation.Going
+                    @Model.FlightInformation.TakeOffTime
                 </div>
                 <div>
                     Landing Time<br>
-                    @Model.FlightInformation.Return
+                    @Model.FlightInformation.LandingTime
                 </div>
                 <div>
                     Seats<br>
@@ -33,19 +33,19 @@
         <div class="reservation-form">
             <form asp-action="CreateReservation">
                 <div class="reservation-form-column">
-                    <input asp-for="FirstName" type="text" id="fname" name="fname" placeholder="First name" value="">
-                    <input asp-for="SecondName" type="text" id="sname" name="sname" placeholder="Second name" value="">
-                    <input asp-for="LastName" type="text" id="lname" name="lname" placeholder="Last name" value="">
+                    <input asp-for="FirstName" type="text" id="fname" placeholder="First name" value="">
+                    <input asp-for="SecondName" type="text" id="sname" placeholder="Second name" value="">
+                    <input asp-for="LastName" type="text" id="lname" placeholder="Last name" value="">
                 </div>
 
                 <div class="reservation-form-column">
-                    <input asp-for="EGN" type="number" id="pin" name="pin" placeholder="PIN" value="">
-                    <input asp-for="PhoneNumber" type="" id="tele" name="tele" placeholder="Telephone" value="">
-                    <input asp-for="Nationality" type="text" id="nation" name="nation" placeholder="Nationality" value="">
+                    <input asp-for="EGN" type="text" id="pin" placeholder="PIN" value="">
+                    <input asp-for="PhoneNumber" type="text" id="tele" placeholder="Telephone" value="">
+                    <input asp-for="Nationality" type="text" id="nation" placeholder="Nationality" value="">
                 </div>
 
                 <div>
-                    <input asp-for="Email" type="text" id="email" name="email" placeholder="Email" value="">
+                    <input asp-for="Email" type="text" id="email" placeholder="Email" value="">
                 </div>
 
                 <div>
@@ -54,10 +54,12 @@
                         <option>Buisness Tick</option>
                     </select>
                 </div>
-                
+
                 <div>
                     <input type="submit" id="submit" value="Submit">
                 </div>
+
+                <input asp-for="PlaneId" type="hidden" id="id" value="@Model.PlaneId">
             </form>
         </div>
     </div>

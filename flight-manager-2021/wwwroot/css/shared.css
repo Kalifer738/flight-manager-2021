@@ -38,6 +38,10 @@ a:visited{
 	text-decoration: none;
 }
 
+button:disabled{
+	opacity: .25;
+}
+
 /*--Globals-End--*/
 
 /*--Background-Start-*/

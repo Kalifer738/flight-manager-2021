@@ -36,14 +36,14 @@ namespace flight_manager_2021.Controllers
                 Id = c.Id,
                 LocationFrom = c.LocationFrom,
                 LocationTo = c.LocationTo,
-                Going = c.Going,
-                Return = c.Return,
+                Going = c.TakeOffTime,
+                Return = c.LandingTime,
                 TypeOfPlane = c.TypeOfPlane,
-                PlaneID = c.PlaneID,
                 NameOfAviator = c.NameOfAviator,
                 CapacityOfEconomyClass = c.CapacityOfEconomyClass,
-                CapacityOfBusinessClass = c.CapacityOfBusinessClass
-
+                CapacityOfBusinessClass = c.CapacityOfBusinessClass,
+                CountOfEconomyClass = c.CountOfEconomyClass,
+                CountOfBusinessClass = c.CountOfBusinessClass
             }).ToArrayAsync();
 
             model.Items = items;

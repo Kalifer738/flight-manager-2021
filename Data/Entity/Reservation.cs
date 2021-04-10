@@ -27,11 +27,11 @@ namespace Data.Entity
 
         //required primary key passengers's egn for database 
         [Required]
-        public int EGN { get; set; }
+        public string EGN { get; set; }
 
         //required passengers's phone number for database
         [Required]
-        public char PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         //required passengers's nationality for database
         [Required]
@@ -44,5 +44,17 @@ namespace Data.Entity
         //required passengers's email for database
         [Required]
         public string Email { get; set; }
+
+        public int PlaneId { get; set; }
+
+        public bool IsNotNull()
+        {
+            if (FirstName == null || SecondName == null || LastName == null || EGN == null || PhoneNumber == null || Nationality == null || TypeOfTicket == null || Email == null || Email == null || PlaneId == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

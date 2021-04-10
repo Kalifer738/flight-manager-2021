@@ -25,19 +25,15 @@ namespace Data.Entity
 
         //required passengers's going date for database
         [Required]
-        public DateTime Going { get; set; }
+        public DateTime TakeOffTime { get; set; }
 
         //required passengers's return date for database
         [Required]
-        public DateTime Return { get; set; }
+        public DateTime LandingTime { get; set; }
 
         //required plane's type for database
         [Required]
         public string TypeOfPlane { get; set; }
-
-        //required plane's id number for database primary key
-        [Required]
-        public int PlaneID { get; set; }
 
         //required pilot's name for database
         [Required]
@@ -48,6 +44,14 @@ namespace Data.Entity
         public int CapacityOfEconomyClass { get; set; }
 
         //required plane's capacity of business class for database
+        [Required]
+        public int CountOfBusinessClass { get; set; }
+
+        //required plane's count of economy class for database
+        [Required]
+        public int CountOfEconomyClass { get; set; }
+
+        //required plane's count of business class for database
         [Required]
         public int CapacityOfBusinessClass { get; set; }
     }

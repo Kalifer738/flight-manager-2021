@@ -36,7 +36,7 @@ namespace Data.Entity
 
         //primary key user's egn for database 
         [Required]
-        public int EGN { get; set; }
+        public string EGN { get; set; }
 
         //user's address for database
         [Required]
@@ -44,7 +44,7 @@ namespace Data.Entity
 
         //user's phone number for database
         [Required]
-        public char PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         //user's role for database
         [Required]

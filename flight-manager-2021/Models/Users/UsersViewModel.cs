@@ -19,11 +19,11 @@ namespace flight_manager_2021.Models.Users
 
         public string LastName { get; set; }
 
-        public int EGN { get; set; }
+        public string EGN { get; set; }
 
         public string Address { get; set; }
 
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         public string Role { get; set; }
     }

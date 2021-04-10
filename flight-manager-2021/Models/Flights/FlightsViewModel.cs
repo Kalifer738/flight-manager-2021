@@ -16,12 +16,14 @@ namespace flight_manager_2021.Models.Flights
 
         public string TypeOfPlane { get; set; }
 
-        public int PlaneID { get; set; }
-
         public string NameOfAviator { get; set; }
 
         public int CapacityOfEconomyClass { get; set; }
 
         public int CapacityOfBusinessClass { get; set; }
+
+        public int CountOfEconomyClass { get; set; }
+
+        public int CountOfBusinessClass { get; set; }
     }
 }

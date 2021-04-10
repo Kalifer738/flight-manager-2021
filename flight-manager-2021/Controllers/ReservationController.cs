@@ -49,7 +49,7 @@ namespace flight_manager_2021.Controllers
 
         //GET: Reservation/Create
         [Route("/Reservation/Create", Name = "create")]
-        public IActionResult Create(string from, string to, DateTime takeOffTime, DateTime landingTime, int bSeats, int sSeats)
+        public IActionResult Create(int id, string from, string to, DateTime takeOffTime, DateTime landingTime, int bSeats, int sSeats)
         {
             ReservationsCreateViewModel model = new ReservationsCreateViewModel();
 
@@ -57,34 +57,38 @@ namespace flight_manager_2021.Controllers
             {
                 LocationFrom = from,
                 LocationTo = to,
-                Going = takeOffTime,
-                Return = landingTime,
+                TakeOffTime = takeOffTime,
+                LandingTime = landingTime,
                 CapacityOfBusinessClass = bSeats,
                 CapacityOfEconomyClass = sSeats
             };
 
             model.FlightInformation = flightInformation;
+            model.PlaneId = id;
 
             return View(model);
         }
 
-        //Post: Reservation/Create
+        /*//Post: Reservation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateReservation(ReservationsCreateViewModel createModel)
         {
+            //For some reason the form doesn't want to parse in the id of the plane.
+            throw new NotImplementedException("CreateReservation via BodyBinding isn't fully implemented yet...");
+
             if (ModelState.IsValid)
             {
                 Reservation reservation = new Reservation
                 {
-                    FirstName = createModel.FirstName,
-                    SecondName = createModel.SecondName,
-                    LastName = createModel.LastName,
-                    EGN = createModel.EGN,
-                    PhoneNumber = (char)createModel.PhoneNumber,
-                    Nationality = createModel.Nationality,
-                    TypeOfTicket = createModel.TypeOfTicket,
-                    Email = createModel.Email
+                    FirstName = ((ReservationsCreateViewModel)createModel).FirstName,
+                    SecondName = ((ReservationsCreateViewModel)createModel).SecondName,
+                    LastName = ((ReservationsCreateViewModel)createModel).LastName,
+                    EGN = ((ReservationsCreateViewModel)createModel).EGN,
+                    PhoneNumber = ((ReservationsCreateViewModel)createModel).PhoneNumber,
+                    Nationality = ((ReservationsCreateViewModel)createModel).Nationality,
+                    TypeOfTicket = ((ReservationsCreateViewModel)createModel).TypeOfTicket,
+                    Email = ((ReservationsCreateViewModel)createModel).Email
                 };
 
                 _context.Add(reservation);
@@ -93,12 +97,56 @@ namespace flight_manager_2021.Controllers
                 return RedirectToAction("privacy");
             }
 
-            ReservationsCreateViewModel model = new ReservationsCreateViewModel();
-            model.FlightInformation = createModel.FlightInformation;
+            ReservationsCreateViewModel model = new ReservationsCreateViewModel
+            {
+                FlightInformation = createModel.FlightInformation
+            };
 
+            return View(model);
+        }*/
+
+        //Post: Reservation/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateReservation(string FirstName, string SecondName, string LastName, string EGN, string PhoneNumber, string Nationality, string TypeOfTicket, string Email, int PlaneId)
+        {
+            if (ModelState.IsValid)
+            {
+                Reservation reservation = new Reservation
+                {
+                    FirstName = FirstName,
+                    SecondName = SecondName,
+                    LastName = LastName,
+                    EGN = EGN,
+                    PhoneNumber = PhoneNumber,
+                    Nationality = Nationality,
+                    TypeOfTicket = TypeOfTicket,
+                    Email = Email,
+                    PlaneId = PlaneId
+                };
+
+                if (reservation.IsNotNull())
+                {
+                    _context.Add(reservation);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Success");
+                }
+            }
+
+            return RedirectToAction("Failed");
+        }
+
+
+        public IActionResult Failed()
+        {
             return View();
         }
-        
+
+        public IActionResult Success()
+        {
+            return View();
+        }
+
         //GET: Reservation/Edit
         public async Task<IActionResult> Edit(int? id)
         {
@@ -140,7 +188,7 @@ namespace flight_manager_2021.Controllers
                     SecondName = editModel.SecondName,
                     LastName = editModel.LastName,
                     EGN = editModel.EGN,
-                    PhoneNumber = (char)editModel.PhoneNumber,
+                    PhoneNumber = editModel.PhoneNumber,
                     Nationality = editModel.Nationality,
                     TypeOfTicket = editModel.TypeOfTicket,
                     Email = editModel.Email
