@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>aspnet-Flight_Manager_2021-F3D66578-C3A9-454E-A44B-3A193CBC7C7E</UserSecretsId>
-    <RootNamespace>Flight_Manager_2021</RootNamespace>
+    <UserSecretsId>aspnet-flight_manager_2021_remastered-899D4217-3A6D-4178-A1B5-1496FF62304F</UserSecretsId>
+    <RootNamespace>flight_manager_2021_remastered</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
