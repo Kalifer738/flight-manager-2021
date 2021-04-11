@@ -1,0 +1,37 @@
+﻿@model FlightManager.Models.Flights.FlightsCreateViewModel
+
+<div class="content-incasing">
+    <div class="reservation">
+        <div class="reservation-header">
+            <h1 style="margin-top: 0px">Create Flight</h1>
+        </div>
+        <div class="reservation-form" style="height: max-content;">
+            <form asp-action="CreateReservation" class="container">
+                <div class="row">
+                    <input class="form-control" asp-for="LocationFrom" type="text" id="lfrom" placeholder="Take off location" value="">
+                    <input class="form-control" asp-for="LocationTo" type="text" id="lto" placeholder="Landing location" value="">
+                </div>
+
+                <div class="row">
+                    <input class="form-control" asp-for="CapacityOfBusinessClass" type="text" id="cb" placeholder="Capacity of business class" value="">
+                    <input class="form-control" asp-for="CapacityOfStandartClass" type="text" id="cs" placeholder="Capacity of business standart" value="">
+                </div>
+
+                <div class="row">
+                    <input class="form-control" asp-for="Going" type="text" id="g" placeholder="Take off time" value="">
+                    <input class="form-control" asp-for="Return" type="text" id="r" placeholder="Landing off time" value="">
+                </div>
+
+                <div class="row">
+                    <input class="form-control" asp-for="TypeOfPlane" type="text" id="t" placeholder="Plane Type" value="">
+                    <input class="form-control" asp-for="NameOfAviator" type="text" id="n" placeholder="Aviation Name" value="">
+                </div>
+
+                <div class="row">
+                    <input class="btn btn-primary" type="submit" id="submit" value="Create">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

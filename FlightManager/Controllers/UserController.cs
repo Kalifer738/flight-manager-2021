@@ -17,7 +17,7 @@ namespace FlightManager.Controllers
 {
     public class UserController : Controller
     {
-
+        //https://localhost:44357/Identity/Account/Register
         private const int PageSize = 10;
         private readonly ILogger<UserController> _logger;
         UserManager<User> userManager;
@@ -32,28 +32,15 @@ namespace FlightManager.Controllers
 
         // GET: UserController
         [HttpGet]
-        public async Task<IActionResult> Index(UsersIndexViewModel model)
+        public IActionResult Index(UsersIndexViewModel model)
         {
             model.Pager ??= new PagerViewModel();
             model.Pager.CurrentPage = model.Pager.CurrentPage <= 0 ? 1 : model.Pager.CurrentPage;
 
-            List<UsersViewModel> items = await _context.Users.Skip((model.Pager.CurrentPage - 1) * PageSize).Take(PageSize).Select(c => new UsersViewModel()
-            {
-                Id = c.Id,
-                UserName = c.UserName,
-                Password = c.Password,
-                Email = c.Email,
-                FirstName = c.FirstName,
-                LastName = c.LastName,
-                EGN = c.EGN,
-                Address = c.Address,
-                PhoneNumber = c.PhoneNumber,
-                Role = c.Role
-
-            }).ToListAsync();
+            UsersViewModel[] items = GetPagedUserViewModel((model.Pager.CurrentPage - 1) * PageSize, PageSize);
 
             model.Items = items;
-            model.Pager.PagesCount = (int)Math.Ceiling(await _context.Users.CountAsync() / (double)PageSize);
+            model.Pager.PagesCount = (int)Math.Ceiling(userManager.Users.Count() / (double)PageSize);
 
             return View(model);
         }
@@ -66,10 +53,9 @@ namespace FlightManager.Controllers
 
         // GET: UserController/Create
         [HttpGet]
-        public ActionResult Create(UsersCreateViewModel)
+        public ActionResult Create(UsersViewModel model)
         {
-            
-            return View();
+            return View(model);
         }
 
         // POST: UserController/Create
@@ -101,7 +87,7 @@ namespace FlightManager.Controllers
         // POST: UserController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(UsersEditViewModel collection)
         {
             try
             {
@@ -111,18 +97,12 @@ namespace FlightManager.Controllers
             {
                 return View();
             }
-        }
-
-        // GET: UserController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
         }
 
         // POST: UserController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
@@ -132,6 +112,26 @@ namespace FlightManager.Controllers
             {
                 return View();
             }
+        }
+
+        private UsersViewModel[] GetPagedUserViewModel(int pageNumber, int numberofElements)
+        {
+            IdentityUser[] returnedUsers = userManager.Users.Skip(pageNumber).Take(numberofElements).ToArray();
+            UsersViewModel[] preparedUsers = new UsersViewModel[returnedUsers.Length];
+
+            for (int i = 0; i < returnedUsers.Length; i++)
+            {
+                preparedUsers[i] = new UsersViewModel()
+                {
+                    Email = returnedUsers[i].Email,
+                    Id = returnedUsers[i].Id,
+                    PhoneNumber = returnedUsers[i].PhoneNumber,
+                    Role = "User",
+                    UserName = returnedUsers[i].UserName,
+                };
+            }
+
+            return preparedUsers;
         }
     }
 }
