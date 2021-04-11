@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Edit";
+}
+@model FlightManager.Models.Users.UsersEditViewModel
+
+<div class="jumbotron">
+    <form asp-action="editReservation">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input class="form-control" asp-for="UserName" type="text" placeholder="Username" value="@Model.UserName">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">First name</label>
+            <input class="form-control" asp-for="Email" type="text" placeholder="Landing location" value="@Model.Email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">PhoneNumber</label>
+            <input class="form-control" asp-for="PhoneNumber" type="text" placeholder="Last Name" value="@Model.PhoneNumber">
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Edit">
+        </div>
+        <input asp-for="Id" type="hidden" value="@Model.Id" />
+    </form>
+</div>

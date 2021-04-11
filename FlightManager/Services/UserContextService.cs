@@ -1,4 +1,5 @@
 ﻿using Data;
+using FlightManager.Data;
 using FlightManager.Data.Entity;
 using Microsoft.AspNetCore.Hosting;
 using System;
@@ -11,15 +12,15 @@ namespace FlightManager.Services
     /// <summary>
     /// A useless service, mdae for the user table that has been moved to the identity DB.
     /// </summary>
-    public class UserContextService
+    /*public class UserContextService
     {
-        /*public IWebHostEnvironment WebHostEnvironment { get; }
+        public IWebHostEnvironment WebHostEnvironment { get; }
         public ConnectionDB context;
 
         public UserContextService(IWebHostEnvironment webBuilderHost)
         {
             WebHostEnvironment = webBuilderHost;
-            context = new ConnectionDB();
+            context = new ApplicationDbContext();
         }
 
         public User GetOne(int id)
@@ -75,6 +76,7 @@ namespace FlightManager.Services
         {
             context.Users.Remove(context.Flights.Find(id));
             context.SaveChangesAsync();
-        }*/
+        }
     }
+        */
 }

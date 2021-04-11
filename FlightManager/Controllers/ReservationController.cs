@@ -2,6 +2,8 @@
 using FlightManager.Data.Entity;
 using FlightManager.Models.Reservations;
 using FlightManager.Services;
+using FlightManager.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -32,15 +34,30 @@ namespace FlightManager.Controllers
         }
 
         // GET: ReservationController
-        public ActionResult Index()
+        [Authorize]
+        public IActionResult Index(ReservationsIndexViewModel model)
         {
-            return View();
-        }
+            model.Pager ??= new PagerViewModel();
+            model.Pager.CurrentPage = model.Pager.CurrentPage <= 0 ? 1 : model.Pager.CurrentPage;
 
-        // GET: ReservationController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            ReservationsViewModel[] items = reservationContext.GetNPaged((model.Pager.CurrentPage - 1) * PageSize, PageSize).Select(c => new ReservationsViewModel()
+            {
+                Id = c.Id,
+                FirstName = c.FirstName,
+                SecondName = c.SecondName,
+                LastName = c.LastName,
+                EGN = c.EGN,
+                PhoneNumber = c.PhoneNumber,
+                Nationality = c.Nationality,
+                TypeOfTicket = c.TypeOfTicket,
+                Email = c.Email
+
+            }).ToArray();
+
+            model.Items = items;
+            model.Pager.PagesCount = (int)Math.Ceiling(reservationContext.Count() / (double)PageSize);
+
+            return View(model);
         }
 
         // POST: ReservationController/Create
@@ -99,45 +116,47 @@ namespace FlightManager.Controllers
         }
 
         // GET: ReservationController/Edit/5
+        [Authorize]
+        [HttpGet]
+        [Route("/Reservation/Edit", Name = "editReservationView")]
         public ActionResult Edit(int id)
         {
-            return View();
+            Reservation reservation = reservationContext.GetOne(id);
+            ReservationsEditViewModel model = new ReservationsEditViewModel(reservation);
+            return View(model);
         }
 
-        // POST: ReservationController/Edit/5
+        [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [Route("/Reservation/EditReservation", Name = "editReservation")]
+        public IActionResult EditReservation(string FirstName, string SecondName, string LastName, string PhoneNumber, string EGN, string Nationality, string TypeOfTicket, string Email, int Id)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                var reservation = reservationContext.GetOne(Id);
+
+                reservation.FirstName = FirstName;
+                reservation.SecondName = SecondName;
+                reservation.LastName = LastName;
+                reservation.PhoneNumber = PhoneNumber;
+                reservation.EGN = EGN;
+                reservation.Nationality = Nationality;
+                reservation.TypeOfTicket = TypeOfTicket;
+                reservation.Email = Email;
+
+                reservationContext.Update(reservation);
+                return RedirectToAction("Success");
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Error");
         }
 
         // GET: ReservationController/Delete/5
-        public ActionResult Delete(int id)
+        [Authorize]
+        [Route("Reservation/Delete", Name = "deleteReservation")]
+        public IActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: ReservationController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            reservationContext.Remove(id);
+            return RedirectToAction("");
         }
 
         public IActionResult Success()

@@ -76,5 +76,15 @@ namespace FlightManager.Services
             context.Flights.Remove(context.Flights.Find(id));
             context.SaveChangesAsync();
         }
+
+        public int Count()
+        {
+            return context.Flights.Count();
+        }
+
+        public int Count(Expression<Func<Flight, bool>> expression)
+        {
+            return context.Flights.Count(expression);
+        }
     }
 }

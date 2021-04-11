@@ -1,9 +1,28 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace FlightManager.Models.Reservations
 {
     public class ReservationsEditViewModel
     {
+        public ReservationsEditViewModel(Reservation reservation)
+        {
+            Id = reservation.Id;
+            FirstName = reservation.FirstName;
+            SecondName = reservation.SecondName;
+            LastName= reservation.LastName;
+            PhoneNumber = reservation.PhoneNumber;
+            EGN = reservation.EGN;
+            Nationality = reservation.Nationality;
+            TypeOfTicket = reservation.TypeOfTicket;
+            Email = reservation.Email;
+        }
+
+        public ReservationsEditViewModel()
+        {
+
+        }
+
         /// <summary>
         /// administrator and passenger can edit reservation  
         /// the data is entered automatically by EGN 

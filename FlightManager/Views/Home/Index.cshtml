@@ -25,7 +25,7 @@
         </thead>
         <tbody>
             @for (int i = 0; i < Model.Items.Length; i++)
-            {
+             {
                 <tr>
                     <td>@Html.DisplayFor(model => model.Items[i].LocationFrom)</td>
                     <td>@Html.DisplayFor(model => model.Items[i].LocationTo)</td>
@@ -42,10 +42,9 @@
                         @if (SignInManager.IsSignedIn(User))
                         {
                             var flightParameter = new Dictionary<string, string>
-                                    {
+                            {
                                 {"id", Model.Items[i].Id.ToString()},
                             };
-
                             <a asp-route="editFlightView" asp-all-route-data="flightParameter" class="btn btn-primary">
                                 Edit
                             </a>
@@ -78,7 +77,7 @@
                         }
                     </td>
                 </tr>
-            }
+             }
         </tbody>
     </table>
     @if (Model.Items.Length == 0)

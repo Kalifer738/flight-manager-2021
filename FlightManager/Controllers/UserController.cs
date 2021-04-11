@@ -4,6 +4,7 @@ using FlightManager.Models.Flights;
 using FlightManager.Models.Users;
 using FlightManager.Services;
 using FlightManager.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -31,6 +32,7 @@ namespace FlightManager.Controllers
         }
 
         // GET: UserController
+        [Authorize]
         [HttpGet]
         public IActionResult Index(UsersIndexViewModel model)
         {
@@ -45,73 +47,51 @@ namespace FlightManager.Controllers
             return View(model);
         }
 
-        // GET: UserController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: UserController/Create
+        [Authorize]
         [HttpGet]
-        public ActionResult Create(UsersViewModel model)
+        public ActionResult Create()
         {
-            return View(model);
+            return RedirectToRoute("Identity/Account/Register");
         }
 
         // POST: UserController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(UsersCreateViewModel model)
+        [Authorize]
+        [Route("/User/EditUser", Name = "editUser")]
+        public ActionResult EditUser(string id, string userName, string phoneNumber, string email)
         {
             if (ModelState.IsValid)
             {
-
+                IdentityUser user = userManager.Users.First(x => x.Id == id);
+                user.UserName = userName;
+                user.PhoneNumber = phoneNumber;
+                user.Email = email;
+                userManager.UpdateAsync(user);
+                return RedirectToAction("Success");
             }
 
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Error");
         }
 
+
+        [HttpGet]
+        [Authorize]
+        [Route("/Home/Edit", Name = "editFlightView")]
         // GET: UserController/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Edit(string id)
         {
-            return View();
+            IdentityUser user = userManager.Users.First(x => x.Id == id);
+            UsersEditViewModel model = new UsersEditViewModel(user);
+            return View(model);
         }
 
-        // POST: UserController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(UsersEditViewModel collection)
+        [Authorize]
+        [Route("User/Delete", Name = "deleteUser")]
+        public ActionResult Delete(string id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // POST: UserController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            userManager.DeleteAsync(userManager.Users.First(x => x.Id == id));
+            return RedirectToAction("");
         }
 
         private UsersViewModel[] GetPagedUserViewModel(int pageNumber, int numberofElements)

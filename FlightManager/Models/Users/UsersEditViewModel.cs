@@ -1,11 +1,52 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace FlightManager.Models.Users
 {
     public class UsersEditViewModel
     {
-        /// <summary>
+        /*
+         Missing:
+            FirstName
+            LastName
+            PIN
+            Address
+            Role?
+        */
+
+
+
+        public UsersEditViewModel()
+        {
+
+        }
+
+        public UsersEditViewModel(string id, string userName, string phoneNumber, string passwordHash, string email)
+        {
+            Id = id;
+            UserName = userName;
+            PhoneNumber = phoneNumber;
+            PasswordHash = passwordHash;
+            Email = email;
+        }
+
+        public UsersEditViewModel(IdentityUser user)
+        {
+            Id = user.Id;
+            UserName = user.UserName;
+            PhoneNumber = user.PhoneNumber;
+            PasswordHash = user.PasswordHash;
+            Email = user.Email;
+        }
+
+        public string Id { get; set; }
+        public string UserName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string PasswordHash { get; set; }
+        public string Email { get; set; }
+
+        /*/// <summary>
         /// administrator can edit empolyee's profiles  
         /// the data is entered automatically by EGN 
         /// </summary>
@@ -59,6 +100,6 @@ namespace FlightManager.Models.Users
         //checks if the field is empty
         [Required(ErrorMessage = "Role is required.")]
         //initiation data input by administrator for empolyee's role
-        public string Role { get; set; }
+        public string Role { get; set; }*/
     }
 }

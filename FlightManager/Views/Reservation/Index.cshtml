@@ -1,8 +1,61 @@
 ﻿@{
     ViewData["Title"] = "Flights";
 }
+@using Microsoft.AspNetCore.Identity
 @model FlightManager.Models.Reservations.ReservationsIndexViewModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
-<div style="width: 20rem; height: 20rem; background-color: darkred;">
-    You shouldn't be able to see this if you aren't logged in!
+
+<div class="jumbotron">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">First name</th>
+                <th scope="col">Second Name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">PIN</th>
+                <th scope="col">Nationality</th>
+                <th scope="col">Type of ticket</th>
+                <th scope="col">Email</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Items.Length; i++)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => model.Items[i].FirstName)</td>
+                    <td>@Html.DisplayFor(model => model.Items[i].SecondName)</td>
+                    <td>@Html.DisplayFor(model => model.Items[i].LastName)</td>
+                    <td>@Html.DisplayFor(model => model.Items[i].PhoneNumber)</td>
+                    <td>@Html.DisplayFor(model => model.Items[i].EGN)</td>
+                    <td>@Html.DisplayFor(model => model.Items[i].Nationality)</td>
+                    <td>@Html.DisplayFor(model => model.Items[i].TypeOfTicket)</td>
+                    <td>@Html.DisplayFor(model => model.Items[i].Email)</td>
+                    <td>
+                        @{
+                            var reservationParameters = new Dictionary<string, string>
+                                        {
+                                { "id", Model.Items[i].Id.ToString() },
+                            };
+                        }
+                        <a asp-route="editReservationView" asp-all-route-data="reservationParameters" class="btn btn-primary">
+                            Edit
+                        </a>
+                        <a asp-route="deleteReservation" asp-all-route-data="reservationParameters" class="btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (Model.Items.Length == 0)
+    {
+        <p class="text-center">There are no reservations</p>
+    }
 </div>
+
+

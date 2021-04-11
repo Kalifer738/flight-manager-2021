@@ -75,5 +75,15 @@ namespace FlightManager.Services
             context.Reservations.Remove(context.Reservations.Find(id));
             context.SaveChangesAsync();
         }
+
+        public int Count()
+        {
+            return context.Reservations.Count();
+        }
+
+        public int Count(Expression<Func<Reservation, bool>> expression)
+        {
+            return context.Reservations.Count(expression);
+        }
     }
 }

@@ -4,6 +4,36 @@ namespace Data.Entity
 {
     public class Reservation
     {
+        public Reservation()
+        {
+
+        }
+
+        public Reservation(int Id, string FirstName, string SecondName, string LastName, string PhoneNumber, string EGN, string Nationality, string TypeOfTicket, string Email)
+        {
+            this.Id = Id;
+            this.FirstName = FirstName;
+            this.SecondName = SecondName;
+            this.LastName = LastName;
+            this.PhoneNumber = PhoneNumber;
+            this.EGN = EGN;
+            this.Nationality = Nationality;
+            this.TypeOfTicket = TypeOfTicket;
+            this.Email = Email;
+        }
+
+        public Reservation(string FirstName, string SecondName, string LastName, string PhoneNumber, string EGN, string Nationality, string TypeOfTicket, string Email)
+        {
+            this.FirstName = FirstName;
+            this.SecondName = SecondName;
+            this.LastName = LastName;
+            this.PhoneNumber = PhoneNumber;
+            this.EGN = EGN;
+            this.Nationality = Nationality;
+            this.TypeOfTicket = TypeOfTicket;
+            this.Email = Email;
+        }
+
         //primary key
         [Key]
         public int Id { get; set; }

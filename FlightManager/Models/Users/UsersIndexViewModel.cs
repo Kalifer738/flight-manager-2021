@@ -10,6 +10,6 @@ namespace FlightManager.Models.Users
     {
         public PagerViewModel Pager { get; set; }
 
-        public ICollection<UsersViewModel> Items { get; set; }
+        public UsersViewModel[] Items { get; set; }
     }
 }

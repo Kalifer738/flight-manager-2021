@@ -55,6 +55,7 @@ namespace FlightManager.Controllers
             }).ToArray();
 
             model.Items = items;
+            model.Pager.PagesCount = (int)Math.Ceiling(_context.Count() / (double)PageSize);
 
             return View(model);
         }
@@ -84,7 +85,6 @@ namespace FlightManager.Controllers
                 flight.TypeOfPlane = TypeOfPlane;
                 flight.NameOfAviator = NameOfAviator;
 
-                //flight = new Flight(LocationFrom, LocationTo, Going, Return, TypeOfPlane, NameOfAviator, CapacityOfBusinessClass, CapacityOfStandartClass, CountOfBusinessClass, CountOfStandartClass);
                 _context.Update(flight);
                 return RedirectToAction("Success");
             }

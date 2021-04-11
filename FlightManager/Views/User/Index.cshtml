@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Flights";
+}
+@using Microsoft.AspNetCore.Identity
+@model FlightManager.Models.Users.UsersIndexViewModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<div class="jumbotron">
+    <a class="btn btn-primary btn-lg btn-block" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">UserName</th>
+                <th scope="col">Email</th>
+                <th scope="col">PhoneNumber</th>
+                <th scope="col">Role</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Items.Length; i++)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => model.Items[i].UserName)</td>
+                    <td>@Html.DisplayFor(model => model.Items[i].Email)</td>
+                    <td>@Html.DisplayFor(model => model.Items[i].PhoneNumber)</td>
+                    <td>@Html.DisplayFor(model => model.Items[i].Role)</td>
+                    <td>
+                        @{
+                            var userParameters = new Dictionary<string, string>
+                                                    {
+                                { "id", Model.Items[i].Id.ToString() },
+                            };
+                        }
+                        <a asp-route="editFlightView" asp-all-route-data="userParameters" class="btn btn-primary">
+                            Edit
+                        </a>
+                        <a asp-route="deleteUser" asp-all-route-data="userParameters" class="btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (Model.Items.Length == 0)
+    {
+        <p class="text-center">There no users, how did you even get up to this point?</p>
+    }
+</div>
+
+
