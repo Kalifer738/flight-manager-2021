@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flight-manager-2021", "flight-manager-2021\flight-manager-2021.csproj", "{AAADE95F-1F3E-45D1-B031-2967D8802110}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{BD342897-9DED-44F1-9A40-EF95E33B4497}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Data\Database.csproj", "{BD342897-9DED-44F1-9A40-EF95E33B4497}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightManager", "FlightManager\FlightManager.csproj", "{C68F5A35-5EB0-4BE7-BFEA-4EFA698F5075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightManager", "FlightManager\FlightManager.csproj", "{C68F5A35-5EB0-4BE7-BFEA-4EFA698F5075}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

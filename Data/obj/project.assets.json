@@ -7341,9 +7341,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kik8b\\source\\repos\\flight-manager-2021\\Data\\Data.csproj",
-      "projectName": "Data",
-      "projectPath": "C:\\Users\\kik8b\\source\\repos\\flight-manager-2021\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\kik8b\\source\\repos\\flight-manager-2021\\Data\\Database.csproj",
+      "projectName": "Database",
+      "projectPath": "C:\\Users\\kik8b\\source\\repos\\flight-manager-2021\\Data\\Database.csproj",
       "packagesPath": "C:\\Users\\kik8b\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\kik8b\\source\\repos\\flight-manager-2021\\Data\\obj\\",
       "projectStyle": "PackageReference",
