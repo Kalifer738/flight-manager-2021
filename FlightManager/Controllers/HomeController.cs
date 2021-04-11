@@ -1,4 +1,5 @@
-﻿using FlightManager.Data.Entity;
+﻿using Data.Entity;
+using FlightManager.Data.Entity;
 using FlightManager.Models;
 using FlightManager.Models.Flights;
 using FlightManager.Services;
@@ -58,15 +59,53 @@ namespace FlightManager.Controllers
         }
 
         [HttpGet]
-        public IActionResult Privacy()
+        [Route("/Home/Edit", Name = "editFlight")]
+        public IActionResult Edit(int id)
         {
-            return View();
+            Flight flight = _context.GetOne(id);
+            FlightsEditViewModel model = new FlightsEditViewModel(flight);
+            return View(model);
         }
 
         [HttpGet]
         public IActionResult Create(FlightsCreateViewModel model)
         {
             return View(model);
+        }
+
+        [HttpPost]
+        [Route("/Home/Create", Name = "createFlight")] 
+        public IActionResult CreateFlight(string LocationFrom, string LocationTo, DateTime Going, DateTime Return, string TypeOfPlane, string NameOfAviator, int CapacityOfStandartClass, int CapacityOfBusinessClass)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(new Flight(LocationFrom, LocationTo, Going, Return, TypeOfPlane, NameOfAviator, CapacityOfBusinessClass));
+                return RedirectToAction("Success");
+            }
+            return RedirectToAction("Error");
+        }
+
+        [Route("Home/Delete", Name = "deleteFlight")] 
+        public IActionResult Delete(int id)
+        {
+            _context.Remove(id);
+            return RedirectToAction("");
+        }
+
+        [HttpGet]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Success()
+        {
+            return View();
+        }
+
+        public IActionResult Failed()
+        {
+            return View();
         }
 
         [HttpGet]

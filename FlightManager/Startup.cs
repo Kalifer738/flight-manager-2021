@@ -41,6 +41,7 @@ namespace FlightManager
             services.AddRazorPages();
 
             services.AddTransient<FlightContextService>();
+            services.AddTransient<ReservationContextService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

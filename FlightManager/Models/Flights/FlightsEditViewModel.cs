@@ -1,10 +1,24 @@
-﻿using System;
+﻿using Data.Entity;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace FlightManager.Models.Flights
 {
     public class FlightsEditViewModel
     {
+
+        public FlightsEditViewModel(Flight flight)
+        {
+            Id = flight.Id;
+            CapacityOfBusinessClass = flight.CapacityOfBusinessClass;
+            CapacityOfStandartClass = flight.CapacityOfStandartClass;
+            Going = flight.TakeOffTime;
+            Return = flight.LandingTime;
+            LocationFrom = flight.LocationFrom;
+            LocationTo = flight.LocationTo;
+            NameOfAviator = flight.NameOfAviator;
+            TypeOfPlane = flight.TypeOfPlane;
+        }
         /// <summary>
         /// administrator and employee can edit flights  
         /// the data is entered automatically by planeId 

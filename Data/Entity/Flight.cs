@@ -5,6 +5,19 @@ namespace Data.Entity
 {
     public class Flight
     {
+        public Flight()
+        {
+
+        }
+        public Flight(string locationFrom, string locationTo, DateTime going, DateTime @return, string typeOfPlane, string nameOfAviator, int capacityOfBusinessClass)
+        {
+            LocationFrom = locationFrom;
+            LocationTo = locationTo;
+            TypeOfPlane = typeOfPlane;
+            NameOfAviator = nameOfAviator;
+            CapacityOfBusinessClass = capacityOfBusinessClass;
+        }
+
         //primary key
         [Key]
         public int Id { get; set; }

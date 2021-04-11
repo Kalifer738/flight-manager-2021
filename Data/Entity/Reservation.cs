@@ -42,7 +42,7 @@ namespace Data.Entity
 
         public int PlaneId { get; set; }
 
-        /*public bool IsNotNull()
+        public bool IsNotNull()
         {
             if (FirstName == null || SecondName == null || LastName == null || EGN == null || PhoneNumber == null || Nationality == null || TypeOfTicket == null || Email == null || Email == null || PlaneId == null)
             {
@@ -50,6 +50,6 @@ namespace Data.Entity
             }
 
             return true;
-        }*/
+        }
     }
 }
