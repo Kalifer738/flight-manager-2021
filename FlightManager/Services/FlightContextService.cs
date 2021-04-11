@@ -24,12 +24,12 @@ namespace FlightManager.Services
 
         public Flight GetOne(int id)
         {
-            return context.Flights.Find(id);
+            return context.Flights.First(x => x.Id == id);
         }
 
-        public async Task<Flight> GetOne(Expression<Func<Flight, bool>> predicate)
+        public Flight GetOne(Expression<Func<Flight, bool>> predicate)
         {
-            return await context.Flights.FindAsync(predicate);
+            return context.Flights.First(predicate);
         }
 
         public IQueryable<Flight> GetAll()

@@ -6,28 +6,35 @@
 <div class="jumbotron">
     <form asp-action="CreateFlight">
         <div class="form-group">
+            <label for="exampleInputEmail1">Take off Location</label>
             <input class="form-control" asp-for="LocationFrom" type="text" id="lfrom" placeholder="Take off location" value="">
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">Landing Location</label>
             <input class="form-control" asp-for="LocationTo" type="text" id="lto" placeholder="Landing location" value="">
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">Capacity of buisness class</label>
             <input class="form-control" asp-for="CapacityOfBusinessClass" type="text" id="cb" placeholder="Capacity of business class" value="">
         </div>
-
         <div class="form-group">
+            <label for="exampleInputEmail1">Capacity of standart class</label>
             <input class="form-control" asp-for="CapacityOfStandartClass" type="text" id="cs" placeholder="Capacity of business standart" value="">
         </div>
         <div class="form-group">
-            <input class="form-control" asp-for="Going" type="datetime-local" id="g" placeholder="Take off time" value="@DateTime.Now.ToString("s")">
+            <label for="exampleInputEmail1">Take off time</label>
+            <input class="form-control" asp-for="Going" type="datetime-local" id="g" placeholder="Take off time" value="@DateTime.Now.ToString()">
         </div>
         <div class="form-group">
-            <input class="form-control" asp-for="Return" type="datetime-local" id="r" placeholder="Landing off time" value="@DateTime.Now.ToString("s")">
+            <label for="exampleInputEmail1">Landing time</label>
+            <input class="form-control" asp-for="Return" type="datetime-local" id="r" placeholder="Landing off time" value="@DateTime.Now.ToString()">
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">Plane type</label>
             <input class="form-control" asp-for="TypeOfPlane" type="text" id="t" placeholder="Plane Type" value="">
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">Name of aviator</label>
             <input class="form-control" asp-for="NameOfAviator" type="text" id="n" placeholder="Aviation Name" value="">
         </div>
         <div class="form-group">

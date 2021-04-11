@@ -19,10 +19,10 @@ namespace FlightManager.Controllers
         private readonly ILogger<HomeController> _logger;
         FlightContextService flightContext;
         ReservationContextService reservationContext;
-        UserManager<User> userManager;
-        SignInManager<User> signInManager;
+        UserManager<IdentityUser> userManager;
+        SignInManager<IdentityUser> signInManager;
 
-        public ReservationController(ILogger<HomeController> logger, FlightContextService fContext, ReservationContextService rContext, UserManager<User> userManager, SignInManager<User> signInManager)
+        public ReservationController(ILogger<HomeController> logger, FlightContextService fContext, ReservationContextService rContext, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _logger = logger;
             flightContext = fContext;

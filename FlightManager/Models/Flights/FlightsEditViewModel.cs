@@ -68,5 +68,15 @@ namespace FlightManager.Models.Flights
         [Required(ErrorMessage = "Enter capacity of bussiness class.")]
         //initiation data input by administrator for capacity of bussiness
         public int CapacityOfBusinessClass { get; set; }
+
+        //checks if the field is empty
+        [Required(ErrorMessage = "Enter capacity of economy class.")]
+        //initiation data input by administrator for capacity of economy
+        public int CountOfStandartClass { get; set; }
+
+        //checks if the field is empty
+        [Required(ErrorMessage = "Enter capacity of bussiness class.")]
+        //initiation data input by administrator for capacity of bussiness
+        public int CountOfBusinessClass { get; set; }
     }
 }

@@ -4,34 +4,50 @@
 @model FlightManager.Models.Flights.FlightsEditViewModel
 
 <div class="jumbotron">
-    <form asp-action="CreateFlight">
+    <form asp-action="editFlight">
         <div class="form-group">
+            <label for="exampleInputEmail1">Take off Location</label>
             <input class="form-control" asp-for="LocationFrom" type="text" id="lfrom" placeholder="Take off location" value="@Model.LocationFrom">
         </div>
         <div class="form-group">
-            <input class="form-control" asp-for="LocationTo" type="text" id="lto" placeholder="Landing location" value="">
+            <label for="exampleInputEmail1">Landing Location</label>
+            <input class="form-control" asp-for="LocationTo" type="text" id="lto" placeholder="Landing location" value="@Model.LocationTo">
         </div>
         <div class="form-group">
-            <input class="form-control" asp-for="CapacityOfBusinessClass" type="text" id="cb" placeholder="Capacity of business class" value="@Model.LocationTo">
+            <label for="exampleInputEmail1">Capacity of buisness class</label>
+            <input class="form-control" asp-for="CapacityOfBusinessClass" type="text" id="cb" placeholder="Capacity of business class" value="@Model.CapacityOfBusinessClass">
         </div>
         <div class="form-group">
-            <input class="form-control" asp-for="CapacityOfStandartClass" type="text" id="cs" placeholder="Capacity of business standart" value="@Model.CapacityOfBusinessClass">
+            <label for="exampleInputEmail1">Capacity of standart class</label>
+            <input class="form-control" asp-for="CapacityOfStandartClass" type="text" id="cs" placeholder="Capacity of business standart" value="@Model.CapacityOfStandartClass">
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">Count of business class</label>
+            <input class="form-control" asp-for="CountOfBusinessClass" type="text" id="cb" placeholder="Capacity of business class" value="@Model.CountOfBusinessClass">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Count of standart class</label>
+            <input class="form-control" asp-for="CountOfStandartClass" type="text" id="cs" placeholder="Capacity of business standart" value="@Model.CountOfStandartClass">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Take off time</label>
             <input class="form-control" asp-for="Going" type="datetime-local" id="g" placeholder="Take off time" value="@Model.Going">
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">Landing time</label>
             <input class="form-control" asp-for="Return" type="datetime-local" id="r" placeholder="Landing off time" value="@Model.Return">
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">Plane type</label>
             <input class="form-control" asp-for="TypeOfPlane" type="text" id="t" placeholder="Plane Type" value="@Model.TypeOfPlane">
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">Name of aviator</label>
             <input class="form-control" asp-for="NameOfAviator" type="text" id="n" placeholder="Aviation Name" value="@Model.NameOfAviator">
         </div>
         <div class="form-group">
             <input class="btn btn-primary btn-lg btn-block" type="submit" id="submit" value="Edit">
         </div>
-        <input type="hidden" value="@Model.Id" />
+        <input asp-for="Id" type="hidden" value="@Model.Id" />
     </form>
 </div>

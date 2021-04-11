@@ -20,10 +20,10 @@ namespace FlightManager.Controllers
         //https://localhost:44357/Identity/Account/Register
         private const int PageSize = 10;
         private readonly ILogger<UserController> _logger;
-        UserManager<User> userManager;
-        SignInManager<User> signInManager;
+        UserManager<IdentityUser> userManager;
+        SignInManager<IdentityUser> signInManager;
 
-        public UserController(ILogger<UserController> logger, UserManager<User> userManager, SignInManager<User> signInManager)
+        public UserController(ILogger<UserController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _logger = logger;
             this.userManager = userManager;

@@ -4,6 +4,7 @@ using FlightManager.Models;
 using FlightManager.Models.Flights;
 using FlightManager.Services;
 using FlightManager.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,10 +21,10 @@ namespace FlightManager.Controllers
         private const int PageSize = 10;
         private readonly ILogger<HomeController> _logger;
         FlightContextService _context;
-        UserManager<User> userManager;
-        SignInManager<User> signInManager;
+        UserManager<IdentityUser> userManager;
+        SignInManager<IdentityUser> signInManager;
 
-        public HomeController(ILogger<HomeController> logger, FlightContextService context, UserManager<User> userManager, SignInManager<User> signInManager)
+        public HomeController(ILogger<HomeController> logger, FlightContextService context, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _logger = logger;
             _context = context;
@@ -58,8 +59,7 @@ namespace FlightManager.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        [Route("/Home/Edit", Name = "editFlight")]
+        [Authorize][HttpGet][Route("/Home/Edit", Name = "editFlightView")]
         public IActionResult Edit(int id)
         {
             Flight flight = _context.GetOne(id);
@@ -67,29 +67,52 @@ namespace FlightManager.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult Create(FlightsCreateViewModel model)
-        {
-            return View(model);
-        }
-
-        [HttpPost]
-        [Route("/Home/Create", Name = "createFlight")] 
-        public IActionResult CreateFlight(string LocationFrom, string LocationTo, DateTime Going, DateTime Return, string TypeOfPlane, string NameOfAviator, int CapacityOfStandartClass, int CapacityOfBusinessClass)
+        [Authorize][HttpPost][Route("/Home/EditFlight", Name = "editFlight")]
+        public IActionResult EditFlight(string LocationFrom, string LocationTo, int CapacityOfStandartClass, int CapacityOfBusinessClass, int CountOfBusinessClass, int CountOfStandartClass, DateTime Going, DateTime Return, string TypeOfPlane, string NameOfAviator, int id)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(new Flight(LocationFrom, LocationTo, Going, Return, TypeOfPlane, NameOfAviator, CapacityOfBusinessClass));
+                var flight = _context.GetOne(id);
+                flight.LocationFrom = LocationFrom;
+                flight.LocationTo = LocationTo;
+                flight.CapacityOfStandartClass = CapacityOfStandartClass;
+                flight.CapacityOfBusinessClass = CapacityOfBusinessClass;
+                flight.CountOfBusinessClass = CountOfBusinessClass;
+                flight.CountOfStandartClass = CountOfStandartClass;
+                flight.TakeOffTime = Going;
+                flight.LandingTime = Return;
+                flight.TypeOfPlane = TypeOfPlane;
+                flight.NameOfAviator = NameOfAviator;
+
+                //flight = new Flight(LocationFrom, LocationTo, Going, Return, TypeOfPlane, NameOfAviator, CapacityOfBusinessClass, CapacityOfStandartClass, CountOfBusinessClass, CountOfStandartClass);
+                _context.Update(flight);
                 return RedirectToAction("Success");
             }
             return RedirectToAction("Error");
         }
 
-        [Route("Home/Delete", Name = "deleteFlight")] 
+        [Authorize][HttpPost][Route("/Home/Create", Name = "createFlight")]
+        public IActionResult CreateFlight(string LocationFrom, string LocationTo, DateTime Going, DateTime Return, string TypeOfPlane, string NameOfAviator, int CapacityOfStandartClass, int CapacityOfBusinessClass)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(new Flight(LocationFrom, LocationTo, Going, Return, TypeOfPlane, NameOfAviator, CapacityOfBusinessClass, CapacityOfStandartClass));
+                return RedirectToAction("Success");
+            }
+            return RedirectToAction("Error");
+        }
+
+        [Authorize][Route("Home/Delete", Name = "deleteFlight")]
         public IActionResult Delete(int id)
         {
             _context.Remove(id);
             return RedirectToAction("");
+        }
+
+        [Authorize][HttpGet]
+        public IActionResult Create()
+        {
+            return View();
         }
 
         [HttpGet]

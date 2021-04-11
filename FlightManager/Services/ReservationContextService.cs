@@ -23,12 +23,12 @@ namespace FlightManager.Services
 
         public Reservation GetOne(int id)
         {
-            return context.Reservations.Find(id);
+            return context.Reservations.First(x => x.Id == id);
         }
 
-        public async Task<Reservation> GetOne(Expression<Func<Reservation, bool>> predicate)
+        public Reservation GetOne(Expression<Func<Reservation, bool>> predicate)
         {
-            return await context.Reservations.FindAsync(predicate);
+            return context.Reservations.First(predicate);
         }
 
         public IQueryable<Reservation> GetAll()

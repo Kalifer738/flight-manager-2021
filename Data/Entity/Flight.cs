@@ -9,13 +9,26 @@ namespace Data.Entity
         {
 
         }
-        public Flight(string locationFrom, string locationTo, DateTime going, DateTime @return, string typeOfPlane, string nameOfAviator, int capacityOfBusinessClass)
+        public Flight(string locationFrom, string locationTo, DateTime going, DateTime @return, string typeOfPlane, string nameOfAviator, int capacityOfBusinessClass, int capacityOfStandartClass, int countOfBusinessClass, int countOfStandartClass)
         {
             LocationFrom = locationFrom;
             LocationTo = locationTo;
             TypeOfPlane = typeOfPlane;
             NameOfAviator = nameOfAviator;
             CapacityOfBusinessClass = capacityOfBusinessClass;
+            CapacityOfStandartClass = CapacityOfStandartClass;
+            CountOfBusinessClass = countOfBusinessClass;
+            CountOfStandartClass = countOfStandartClass;
+        }
+
+        public Flight(string locationFrom, string locationTo, DateTime going, DateTime @return, string typeOfPlane, string nameOfAviator, int capacityOfBusinessClass, int capacityOfStandartClass)
+        {
+            LocationFrom = locationFrom;
+            LocationTo = locationTo;
+            TypeOfPlane = typeOfPlane;
+            NameOfAviator = nameOfAviator;
+            CapacityOfBusinessClass = capacityOfBusinessClass;
+            CapacityOfStandartClass = CapacityOfStandartClass;
         }
 
         //primary key

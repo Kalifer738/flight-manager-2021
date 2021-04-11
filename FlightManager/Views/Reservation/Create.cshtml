@@ -4,15 +4,15 @@
 @model FlightManager.Models.Reservations.ReservationsCreateViewModel
 
 <div class="jumbotron">
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th scope="col">From</th>
                 <th scope="col">To</th>
                 <th scope="col">Take off Time</th>
                 <th scope="col">Landing Time</th>
-                <th scope="col">Seats</th>
-                <th scope="col">Reserve</th>
+                <th scope="col">Standart Class Seats</th>
+                <th scope="col">Business Class Seats</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +21,8 @@
                 <td>@Model.FlightInformation.LocationTo</td>
                 <td>@Model.FlightInformation.TakeOffTime</td>
                 <td>@Model.FlightInformation.LandingTime</td>
+                <td>@Model.FlightInformation.CountOfStandartClass/@Model.FlightInformation.CountOfStandartClass</td>
+                <td>@Model.FlightInformation.CountOfBusinessClass/@Model.FlightInformation.CountOfBusinessClass</td>
             </tr>
         </tbody>
     </table>
@@ -49,8 +51,14 @@
         </div>
         <div class="form-group">
             <select asp-for="TypeOfTicket" class="form-control form-control-lg">
-                <option>Standart Ticket</option>
-                <option>Buisness Tick</option>
+                @if (Model.FlightInformation.CountOfStandartClass < Model.FlightInformation.CountOfStandartClass)
+                {
+                    <option>Standart Ticket</option>
+                }
+                @if (Model.FlightInformation.CountOfBusinessClass < Model.FlightInformation.CapacityOfBusinessClass)
+                {
+                    <option>Buisness Ticket</option>
+                }
             </select>
         </div>
         <div class="form-group">

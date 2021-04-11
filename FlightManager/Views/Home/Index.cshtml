@@ -1,17 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Flights";
-
 }
+@using Microsoft.AspNetCore.Identity
 @model FlightManager.Models.Flights.FlightsIndexViewModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
-@{
-    bool user = true;
-}
 
 <div class="jumbotron">
-    @if (user)
+    @if (SignInManager.IsSignedIn(User))
     {
-        <a asp-route="createFlight" class="btn btn-primary">Create Flight</a>
+        <a asp-route="createFlight" class="btn btn-primary btn-lg btn-block">Create Flight</a>
     }
     <table class="table">
         <thead>
@@ -40,14 +39,14 @@
                         @count/@capacity
                     </td>
                     <td>
-                        @if (user)
+                        @if (SignInManager.IsSignedIn(User))
                         {
                             var flightParameter = new Dictionary<string, string>
-                                                            {
+                                    {
                                 {"id", Model.Items[i].Id.ToString()},
                             };
 
-                            <a asp-route="editFlight" asp-all-route-data="flightParameter" class="btn btn-primary">
+                            <a asp-route="editFlightView" asp-all-route-data="flightParameter" class="btn btn-primary">
                                 Edit
                             </a>
                             <a asp-route="deleteFlight" asp-all-route-data="flightParameter" class="btn btn-danger">
@@ -57,17 +56,17 @@
                         else
                         {
                             var reservationParameters = new Dictionary<string, string>
-                                                                {
-                                    {"id", Model.Items[i].Id.ToString()},
-                                    {"from", Model.Items[i].LocationFrom},
-                                    {"to", Model.Items[i].LocationTo},
-                                    {"takeofftime", Model.Items[i].Going.ToString()},
-                                    {"landingtime", Model.Items[i].Return.ToString()},
-                                    {"bcapacity", Model.Items[i].CapacityOfBusinessClass.ToString()},
-                                    {"bcount", Model.Items[i].CountOfBusinessClass.ToString()},
-                                    {"scapacity", Model.Items[i].CapacityOfStandartClass.ToString()},
-                                    {"scount", Model.Items[i].CountOfStandartClass.ToString()},
-                                };
+                                    {
+                                {"id", Model.Items[i].Id.ToString()},
+                                {"from", Model.Items[i].LocationFrom},
+                                {"to", Model.Items[i].LocationTo},
+                                {"takeofftime", Model.Items[i].Going.ToString()},
+                                {"landingtime", Model.Items[i].Return.ToString()},
+                                {"bcapacity", Model.Items[i].CapacityOfBusinessClass.ToString()},
+                                {"bcount", Model.Items[i].CountOfBusinessClass.ToString()},
+                                {"scapacity", Model.Items[i].CapacityOfStandartClass.ToString()},
+                                {"scount", Model.Items[i].CountOfStandartClass.ToString()},
+                            };
                             if (count < capacity)
                             {
                                 <a asp-route="createReservation" asp-all-route-data="reservationParameters" class="btn btn-primary">Reserve</a>
